@@ -1,0 +1,141 @@
+.intro_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px;
+}
+.textContainer {
+  position: relative;
+}
+
+.text {
+  padding: 0 0.5rem;
+  text-align: center;
+  line-height: 1;
+  font-size: 10rem;
+  font-weight: 800;
+  letter-spacing: -0.06em;
+}
+
+.gradientText {
+  .text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(
+    90deg,
+    var(--start, '#007cf0'),
+    var(--end, '#00dfd8')
+  );
+  z-index: 100;
+}
+
+.commonText {
+  .text;
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: black;
+  z-index: -100;
+}
+
+.gradientText0 {
+  .gradientText;
+  @keyframes GradientText-faded-0 {
+    0%,
+    16.667%,
+    100% {
+      opacity: 1;
+    }
+
+    33.333%,
+    83.333% {
+      opacity: 0;
+    }
+  }
+  animation: GradientText-faded-0 8s infinite;
+}
+
+.gradientText1 {
+  .gradientText;
+  @keyframes GradientText-faded-1 {
+    0%,
+    100% {
+      opacity: 0;
+    }
+    33.333%,
+    50% {
+      opacity: 1;
+    }
+    16.667%,
+    66.667% {
+      opacity: 0;
+    }
+  }
+  animation: GradientText-faded-1 8s infinite;
+}
+
+.gradientText2 {
+  .gradientText;
+  @keyframes GradientText-faded-2 {
+    0%,
+    50%,
+    100% {
+      opacity: 0;
+    }
+    66.667%,
+    83.333% {
+      opacity: 1;
+    }
+  }
+  animation: GradientText-faded-2 8s infinite;
+}
+
+.commonText0 {
+  .commonText;
+  @keyframes commonText-faded-0 {
+    0%,
+    16.667%,
+    100% {
+      opacity: 0;
+    }
+
+    33.333%,
+    83.333% {
+      opacity: 1;
+    }
+  }
+  animation: commonText-faded-0 8s infinite;
+}
+.commonText1 {
+  .commonText;
+  @keyframes commonText-faded-1 {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    33.333%,
+    50% {
+      opacity: 0;
+    }
+    16.667%,
+    66.667% {
+      opacity: 1;
+    }
+  }
+  animation: commonText-faded-1 8s infinite;
+}
+.commonText2 {
+  .commonText;
+  @keyframes commonText-faded-2 {
+    0%,
+    50%,
+    100% {
+      opacity: 1;
+    }
+    66.667%,
+    83.333% {
+      opacity: 0;
+    }
+  }
+  animation: commonText-faded-2 8s infinite;
+}
