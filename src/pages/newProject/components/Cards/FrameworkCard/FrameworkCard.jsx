@@ -1,12 +1,9 @@
 import styles from './FrameworkCard.less';
 
-function FrameworkCard({ title, imgURL }) {
+function FrameworkCard({ title, action}) {
   return (
-    <div className={styles.FrameworkCard_container}>
-      <div
-        className={styles.FrameworkCard_image}
-        style={{ '--imgURL': ' url(~@publicPath/go.jpg)' }}
-      ></div>
+    <div className={styles.FrameworkCard_container} onClick={action}>
+      <div className={styles['FrameworkCard_image_' + title]}></div>
       <div className={styles.FrameworkCard_title}>{title}</div>
     </div>
   );

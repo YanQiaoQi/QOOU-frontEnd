@@ -7,9 +7,11 @@ import PersonalInfo from './components/PersonalInfo/PersonalInfo';
 import { ButtonList } from '../../components/Button/Button';
 import Narrative from './components/Narrative/Narrative';
 import Cover from './components/Cover/Cover';
-import Cards from './components/Cards/Cards';
+import Card from './components/Cards/Cards';
+import FrameworkCard from './components/Cards/FrameworkCard/FrameworkCard';
+import CurFooter from './components/CurFooter/CurFooter';
 
-const { Header, Content } = Layout;
+const { Header, Content, Footer } = Layout;
 const { Item } = Breadcrumb;
 
 function NewProject({}) {
@@ -25,21 +27,19 @@ function NewProject({}) {
       type: 'common',
     },
   ];
-  let cardsSettings = [
-    {
-      type: 'import',
-      title: 'Import Git Repository',
-      buttonTitle: 'Import Third-Party Git Repository →',
-    },
-    {
-      type: 'clone',
-      title: 'Clone Template',
-      buttonTitle: 'Browse All Templates →',
-    },
-  ];
+  let importCardSetting = {
+    type: 'import',
+    title: 'Import Git Repository',
+    buttonTitle: 'Import Third-Party Git Repository →',
+  };
+  let cloneCardSettings = {
+    type: 'clone',
+    title: 'Clone Template',
+    buttonTitle: 'Browse All Templates →',
+  };
   return (
     <Layout>
-      <Header type="common">
+      <Header type="sticky">
         <Breadcrumb>
           <Logo type="simple" info="32px" />
           <PersonalInfo username="YanQiaoQi" radius="32px" />
@@ -49,15 +49,27 @@ function NewProject({}) {
           <ButtonList ui={buttonListSettings} />
           <Logo type="personalIcon" info="32px" />
         </Space>
-
       </Header>
+
+      <Cover />
+
       <Content>
-        <Cover />
         <Space type="spacer" size="48px" />
         <Narrative />
         <Space type="spacer" size="72px" />
-        <Cards ui={cardsSettings} />
+        <Space size={48}>
+          <Card {...importCardSetting} />
+          <Card {...cloneCardSettings}>
+            <FrameworkCard title={'go'} />
+          </Card>
+        </Space>
+        <Space type="spacer" size={96} />
       </Content>
+
+      <Footer>
+        <CurFooter />
+        <Space type="spacer" size={24} />
+      </Footer>
     </Layout>
   );
 }
