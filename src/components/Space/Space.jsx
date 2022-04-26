@@ -17,6 +17,7 @@ function Space({
   type = 'common',
   direction = 'row',
   size = 'middle',
+  wrap = true,
   children,
 }) {
   let getDistenceFromSize = (size) => {
@@ -40,13 +41,17 @@ function Space({
       }
     }
   };
-  let gap = getDistenceFromSize(size);
+  let style = { gap: getDistenceFromSize(size) };
+  if (wrap) {
+    style.flexWrap = 'wrap';
+  }
+
   switch (type) {
     case 'common': {
       return (
         <div
           className={styles['space_' + direction + '_container']}
-          style={{ gap }}
+          style={style}
         >
           {children}
         </div>

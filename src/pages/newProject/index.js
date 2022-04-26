@@ -4,9 +4,10 @@ import Breadcrumb from '../../components/Breadcrumb/Breadcrumb';
 import Logo from '../../components/Logo/Logo';
 import Space from '../../components/Space/Space';
 import PersonalInfo from './components/PersonalInfo/PersonalInfo';
-import { ButtonList, MyButton } from '../../components/Button/Button';
+import { ButtonList } from '../../components/Button/Button';
 import Narrative from './components/Narrative/Narrative';
 import Cover from './components/Cover/Cover';
+import Cards from './components/Cards/Cards';
 
 const { Header, Content } = Layout;
 const { Item } = Breadcrumb;
@@ -23,10 +24,17 @@ function NewProject({}) {
       action: null,
       type: 'common',
     },
+  ];
+  let cardsSettings = [
     {
-      title: 'Docs',
-      action: null,
-      type: 'common',
+      type: 'import',
+      title: 'Import Git Repository',
+      buttonTitle: 'Import Third-Party Git Repository →',
+    },
+    {
+      type: 'clone',
+      title: 'Clone Template',
+      buttonTitle: 'Browse All Templates →',
     },
   ];
   return (
@@ -36,13 +44,19 @@ function NewProject({}) {
           <Logo type="simple" info="32px" />
           <PersonalInfo username="YanQiaoQi" radius="32px" />
         </Breadcrumb>
-        <ButtonList ui={buttonListSettings} />
+
+        <Space size={32}>
+          <ButtonList ui={buttonListSettings} />
+          <Logo type="personalIcon" info="32px" />
+        </Space>
+
       </Header>
       <Content>
         <Cover />
         <Space type="spacer" size="48px" />
         <Narrative />
-        
+        <Space type="spacer" size="72px" />
+        <Cards ui={cardsSettings} />
       </Content>
     </Layout>
   );

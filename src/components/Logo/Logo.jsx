@@ -9,7 +9,7 @@ import Space from '../Space/Space';
  *     radius
  * @returns
  */
-function Logo({ type, info = '17px' }) {
+function Logo({ type, info = '17px', action = null }) {
   let logo;
   switch (type) {
     case 'IMG': {
@@ -17,13 +17,21 @@ function Logo({ type, info = '17px' }) {
     }
     case 'simple': {
       logo = (
-        <div className={styles.simpleLogo} style={{ '--radius': info }}></div>
+        <div
+          className={styles.simpleLogo}
+          style={{ '--radius': info }}
+          onClick={action}
+        ></div>
       );
       return logo;
     }
     case 'personalIcon': {
       logo = (
-        <div className={styles.personalIcon} style={{ '--radius': info }}></div>
+        <div
+          className={styles.personalIcon}
+          style={{ '--radius': info }}
+          onClick={action}
+        ></div>
       );
       return logo;
     }
