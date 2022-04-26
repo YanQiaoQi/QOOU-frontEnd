@@ -50,9 +50,7 @@ function NewProject({}) {
           <Logo type="personalIcon" info="32px" />
         </Space>
       </Header>
-
       <Cover />
-
       <Content>
         <Space type="spacer" size="48px" />
         <Narrative />
@@ -65,7 +63,6 @@ function NewProject({}) {
         </Space>
         <Space type="spacer" size={96} />
       </Content>
-
       <Footer>
         <CurFooter />
         <Space type="spacer" size={24} />

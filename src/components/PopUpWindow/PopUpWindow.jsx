@@ -9,7 +9,7 @@ import styles from './PopUpWindow.less';
  * @returns
  */
 function PopUpWindow({ mode, setMode, confirmCallback = null }) {
-  let { isActive = false, info = [], type } = mode;
+  let { isActive = false, info = [], type, title = '请输入以下信息' } = mode;
 
   let getReguestBody = (titleArr) => {
     let res = {};
@@ -61,7 +61,7 @@ function PopUpWindow({ mode, setMode, confirmCallback = null }) {
     }
   };
   let inputGroups = info.map((item) => {
-    let { title, reqKey, type } = item;
+    let { title, reqKey, type, isFocus = false } = item;
     return (
       <div key={reqKey} className={styles.itemContainer}>
         <input
@@ -72,16 +72,17 @@ function PopUpWindow({ mode, setMode, confirmCallback = null }) {
           placeholder={title}
           onFocus={inputHandler('focus')}
           onBlur={inputHandler('blur')}
+          autoFocus={isFocus}
         ></input>
       </div>
     );
   });
 
   return isActive ? (
-    <div className={styles.activeContainer}>
+    <div className={styles.activeContainer} onBlur={closeBtnHandler('click')}>
       <div className={styles.windowContainer}>
         <div className={styles.windowTopContainer}>
-          <div className={styles.windowTitle}>请输入以下信息</div>
+          <div className={styles.windowTitle}>{title}</div>
           <div
             className={styles.windowCloseBtn}
             onClick={closeBtnHandler('click')}

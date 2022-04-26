@@ -30,12 +30,22 @@ function Index({ curyDispatch }) {
       title: 'Login',
       action: curySetMode({
         isActive: true,
+        title: '请输入以下信息',
         info: [
-          { title: 'username', reqKey: 'username', type: 'text' },
-          { title: 'repoName', reqKey: 'repoName', type: 'text' },
-          { title: 'template', reqKey: 'template', type: 'text' },
+          {
+            title: 'username',
+            reqKey: 'username',
+            type: 'text',
+            isFocus: true,
+          },
+          {
+            title: 'github access token',
+            reqKey: 'token',
+            type: 'text',
+            isFocus: false,
+          },
         ],
-        type: 'index/createRepo',
+        type: 'index/register',
       }),
       type: 'common',
     },
@@ -43,11 +53,22 @@ function Index({ curyDispatch }) {
       title: 'Sign Up',
       action: curySetMode({
         isActive: true,
+        title: '请输入以下信息',
         info: [
-          { title: 'username', reqKey: 'username', type: 'text' },
-          { title: 'repoName', reqKey: 'repoName', type: 'text' },
+          {
+            title: 'username',
+            reqKey: 'username',
+            type: 'text',
+            isFocus: true,
+          },
+          {
+            title: 'github access token',
+            reqKey: 'token',
+            type: 'text',
+            isFocus: false,
+          },
         ],
-        type: 'index/deploy',
+        type: 'index/register',
       }),
       type: 'signUp',
     },
@@ -64,9 +85,20 @@ function Index({ curyDispatch }) {
     title: 'Start with Github',
     action: curySetMode({
       isActive: true,
+      title: '请输入以下信息',
       info: [
-        { title: 'username', reqKey: 'username', type: 'text' },
-        { title: 'github access token', reqKey: 'token', type: 'text' },
+        {
+          title: 'username',
+          reqKey: 'username',
+          type: 'text',
+          isFocus: true,
+        },
+        {
+          title: 'github access token',
+          reqKey: 'token',
+          type: 'text',
+          isFocus: false,
+        },
       ],
       type: 'index/register',
     }),
@@ -81,17 +113,18 @@ function Index({ curyDispatch }) {
 
   return (
     <Layout>
-      <Header type="common">
+      <Header type="sticky">
         <Logo type="SVG" />
         <ButtonList ui={buttonListSettings} />
       </Header>
       <Content>
-        <Space type="spacer" size="8px" />
+        <Space type="spacer" size={8} />
         <Introduction {...introSettings} />
-        <Space type="spacer" size="56px" />
+        <Space type="spacer" size={56} />
         <MyButton {...buttonSettings} />
       </Content>
       <PopUpWindow {...PopUpSettings} />
+      <Space type="spacer" size={56} />
     </Layout>
   );
 }
