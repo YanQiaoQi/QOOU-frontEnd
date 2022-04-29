@@ -8,6 +8,10 @@
     "test": "umi-test",
     "test:coverage": "umi-test --coverage"
   },
+  "repository": {
+		"type": "git",
+		"url": "git+git@github.com:YanQiaoQi/QOOU-frontEnd.git"
+	},
   "gitHooks": {
     "pre-commit": "lint-staged"
   },
