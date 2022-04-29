@@ -1,7 +1,7 @@
 import styles from './Footer.less';
 
 function Footer({ children }) {
-  return <div className={styles.footer_container}>{children}</div>;
+  return <footer className={styles.footer_container}>{children}</footer>;
 }
 
 export default Footer;

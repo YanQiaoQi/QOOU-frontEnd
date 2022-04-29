@@ -6,7 +6,8 @@ export default defineConfig({
   },
   routes: [
     { path: '/', component: '@/pages/index/index.js' },
-    { path: '/newProject', component: '@/pages/newProject/index.js' },
+    { path: '/new', component: '@/pages/new/index.js' },
+    { path: '/new/clone', component: '@/pages/clone/index.js' },
   ],
   fastRefresh: {},
 });

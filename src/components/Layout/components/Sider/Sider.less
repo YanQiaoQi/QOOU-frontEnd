@@ -1,0 +1,17 @@
+.sider_container {
+  display: flex;
+  flex-direction: column;
+}
+.common_sider_container {
+  .sider_container;
+}
+
+.sticky_sider_container {
+  .sider_container;
+  position: sticky;
+  top: var(--top, 0px);
+}
+
+.fixed_sider_container {
+  .sider_container;
+}

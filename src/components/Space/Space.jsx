@@ -19,6 +19,7 @@ function Space({
   size = 'middle',
   wrap = true,
   children,
+  style = {},
 }) {
   let getDistenceFromSize = (size) => {
     let typeOfData = (data) => {
@@ -41,9 +42,9 @@ function Space({
       }
     }
   };
-  let style = { gap: getDistenceFromSize(size) };
+  let containerStyle = { ...style, gap: getDistenceFromSize(size) };
   if (wrap) {
-    style.flexWrap = 'wrap';
+    containerStyle.flexWrap = 'wrap';
   }
 
   switch (type) {
@@ -51,14 +52,26 @@ function Space({
       return (
         <div
           className={styles['space_' + direction + '_container']}
-          style={style}
+          style={containerStyle}
         >
           {children}
         </div>
       );
     }
     case 'spacer': {
-      return <div style={{ height: size }}></div>;
+      return (
+        <span style={{ marginTop: size, marginLeft: size / 2 }}></span>
+      );
+    }
+    case 'space-between': {
+      return (
+        <div
+          className={styles.space_between_container}
+          style={containerStyle}
+        >
+          {children}
+        </div>
+      );
     }
     default:
       return children;

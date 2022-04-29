@@ -9,7 +9,8 @@ import styles from './PopUpWindow.less';
  * @returns
  */
 function PopUpWindow({ mode, setMode, confirmCallback = null }) {
-  let { isActive = false, info = [], type, title = '请输入以下信息' } = mode;
+  let { isActive, info = [], type, title = '请输入以下信息' } = mode;
+  if (!isActive) return null;
 
   let getReguestBody = (titleArr) => {
     let res = {};
@@ -26,7 +27,7 @@ function PopUpWindow({ mode, setMode, confirmCallback = null }) {
   let inputHandler = (type) => (e) => {
     switch (type) {
       case 'focus': {
-        setStyle(e, 'borderColor', '#007fff');
+        setStyle(e, 'border', '1px solid #007fff');
         break;
       }
       case 'blur': {
@@ -73,13 +74,13 @@ function PopUpWindow({ mode, setMode, confirmCallback = null }) {
           onFocus={inputHandler('focus')}
           onBlur={inputHandler('blur')}
           autoFocus={isFocus}
-        ></input>
+        />
       </div>
     );
   });
 
-  return isActive ? (
-    <div className={styles.activeContainer} onBlur={closeBtnHandler('click')}>
+  return (
+    <div className={styles.activeContainer}>
       <div className={styles.windowContainer}>
         <div className={styles.windowTopContainer}>
           <div className={styles.windowTitle}>{title}</div>
@@ -99,7 +100,7 @@ function PopUpWindow({ mode, setMode, confirmCallback = null }) {
         </div>
       </div>
     </div>
-  ) : null;
+  );
 }
 
 export default PopUpWindow;

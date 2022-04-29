@@ -20,10 +20,16 @@ let defaultSettings = {
  *          main
  * @returns
  */
-function MyButton({ title, action, type = 'common', style } = defaultSettings) {
+function MyButton({
+  children,
+  title,
+  action,
+  type = 'common',
+  style,
+} = defaultSettings) {
   return (
     <div className={styles[type]} onClick={action} style={style}>
-      {title}
+      <span>{children ? children : title ? title : 'button'}</span>
     </div>
   );
 }

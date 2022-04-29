@@ -10,7 +10,7 @@ import PopUpWindow from '../../components/PopUpWindow/PopUpWindow';
 
 const { Header, Content } = Layout;
 
-function Index({ curyDispatch }) {
+function IndexPage({ curyDispatch }) {
   const [mode, setMode] = useState({
     isActive: false,
     info: [
@@ -143,4 +143,4 @@ export default connect(
       },
     };
   },
-)(Index);
+)(IndexPage);
