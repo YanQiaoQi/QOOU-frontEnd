@@ -26,12 +26,12 @@ function NewPage({}) {
     {
       title: 'Feedback',
       action: null,
-      type: 'common',
+      type: 'text',
     },
     {
       title: 'Support',
       action: null,
-      type: 'common',
+      type: 'text',
     },
   ];
   let importCardSetting = {

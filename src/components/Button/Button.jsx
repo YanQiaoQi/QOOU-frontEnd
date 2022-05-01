@@ -20,7 +20,26 @@ function Button({
   onClick,
   className,
   style,
-} = defaultSettings) {
+}) {
+  let isLink = false;
+  let hasIcon = false;
+  let hasChildren = false;
+  let isOnlyIcon = false;
+  let isDisabled = false;
+  if (href !== undefined) {
+    isLink = true;
+  }
+  if (children !== undefined) {
+    hasChildren = true;
+  }
+  if (icon !== undefined) {
+    hasIcon = true;
+    isOnlyIcon = hasIcon && !hasChildren;
+  }
+  if (disabled === true) {
+    isDisabled = true;
+  }
+
   let basicBtnClassName = 'myDesign-btn';
   let btnClassName = combineClassNames(
     styles[basicBtnClassName],
@@ -28,6 +47,12 @@ function Button({
     styles[`${basicBtnClassName}-${size}`],
     styles[`${basicBtnClassName}-${shape}`],
   );
+  if (isOnlyIcon) {
+    btnClassName = combineClassNames(
+      btnClassName,
+      styles[`${basicBtnClassName}-icon-only`],
+    );
+  }
   if (className !== undefined) {
     btnClassName = combineClassNames(btnClassName, className);
   }
@@ -37,7 +62,6 @@ function Button({
       styles[`${basicBtnClassName}-block`],
     );
   }
-
   if (ghost === true) {
     btnClassName = combineClassNames(
       btnClassName,
@@ -57,46 +81,25 @@ function Button({
     );
   }
 
-  if (href !== undefined) {
-    return (
-      <a
-        href={href}
-        target={target}
-        className={btnClassName}
-        style={style}
-        onClick={onClick}
-      >
-        <span>{children}</span>
-      </a>
-    );
-  }
-  if (icon !== undefined) {
-    return (
-      <button
-        type={htmlType}
-        className={btnClassName}
-        style={style}
-        onClick={onClick}
-      >
-        <span>{children}</span>
-      </button>
-    );
-  }
-  if (disabled === true) {
-    return (
-      <button disabled type={htmlType} className={btnClassName}>
-        <span>{children}</span>
-      </button>
-    );
-  }
-  return (
+  return isLink ? (
+    <a
+      href={href}
+      target={target}
+      className={btnClassName}
+      style={!isDisabled ? style : null}
+    >
+      {hasIcon ? icon : null}
+      {hasChildren ? <span>{children}</span> : null}
+    </a>
+  ) : (
     <button
       type={htmlType}
       className={btnClassName}
-      style={style}
-      onClick={onClick}
+      style={!isDisabled ? style : null}
+      onClick={!isDisabled ? onClick : null}
     >
-      <span>{children}</span>
+      {hasIcon ? icon : null}
+      {hasChildren ? <span>{children}</span> : null}
     </button>
   );
 }

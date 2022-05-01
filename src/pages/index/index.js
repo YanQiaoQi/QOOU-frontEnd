@@ -22,7 +22,7 @@ function IndexPage({ curyDispatch }) {
   const curySetMode = (val) => () => {
     setMode(val);
   };
-  
+
   let buttonListSettings = [
     {
       title: 'Login',
@@ -110,12 +110,6 @@ function IndexPage({ curyDispatch }) {
     },
   };
 
-  let PopUpSettings = {
-    mode: mode,
-    setMode: setMode,
-    confirmCallback: curyDispatch,
-  };
-
   return (
     <Layout>
       <Header type="sticky">
@@ -131,7 +125,11 @@ function IndexPage({ curyDispatch }) {
         <Space type="spacer" size={56} />
       </Content>
 
-      <PopUpWindow {...PopUpSettings} />
+      <PopUpWindow
+        mode={mode}
+        setMode={setMode}
+        confirmCallback={curyDispatch}
+      />
     </Layout>
   );
 }
