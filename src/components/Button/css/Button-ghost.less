@@ -1,4 +1,36 @@
+@myDesign-primary-color: #1890ff;
+@myDesign-primary-color-hover: #40a9ff;
+@myDesign-error-color: #1890ff;
+@myDesign-error-color-hover: #40a9ff;
+.myDesign-btn-ghost.myDesign-btn,
+.myDesign-btn-ghost.myDesign-btn:hover,
+.myDesign-btn-ghost.myDesign-btn:active,
+.myDesign-btn-ghost.myDesign-btn:focus {
+  background: 0 0;
+}
+
 // primary
+.myDesign-btn-ghost.myDesign-btn-primary {
+  color: @myDesign-primary-color;
+  border-color: @myDesign-primary-color;
+  text-shadow: none;
+}
 // common
 // dashed
+.myDesign-btn-ghost.myDesign-btn {
+  color: #fff;
+  border-color: #fff;
+}
+.myDesign-btn.myDesign-btn-ghost:hover,
+.myDesign-btn.myDesign-btn-ghost:focus {
+  color: @myDesign-primary-color-hover;
+  border-color: @myDesign-primary-color-hover;
+}
+
 // danger
+.myDesign-btn-ghost.myDesign-btn-danger:hover,
+.myDesign-btn-ghost.myDesign-btn-danger:focus {
+  color: @myDesign-error-color-hover;
+  border-color: @myDesign-error-color-hover;
+  background: 0 0;
+}
