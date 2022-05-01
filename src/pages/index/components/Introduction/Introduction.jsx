@@ -1,5 +1,9 @@
 import styles from './Introduction.less';
-
+let defaultSettings = [
+  { text: 'Develop.', startColor: '#007cf0', endColor: '#00dfd8' },
+  { text: 'Preview.', startColor: '#7928CA', endColor: '#FF0080' },
+  { text: 'Ship.', startColor: '#FF4D4D', endColor: '#F9CB28' },
+];
 function GradientText({ text, startColor, endColor, animation, index }) {
   let gradientTextClassName = 'gradientText' + index;
   let commonTextClassName = 'commonText' + index;
@@ -19,13 +23,7 @@ function GradientText({ text, startColor, endColor, animation, index }) {
   );
 }
 
-function Introduction({
-  texts = [
-    { text: 'Develop.', startColor: '#007cf0', endColor: '#00dfd8' },
-    { text: 'Preview.', startColor: '#7928CA', endColor: '#FF0080' },
-    { text: 'Ship.', startColor: '#FF4D4D', endColor: '#F9CB28' },
-  ],
-}) {
+function Introduction({ texts = defaultSettings }) {
   let textList = texts.map((item, index) => {
     item.index = index;
     return <GradientText key={item.text} {...item} />;

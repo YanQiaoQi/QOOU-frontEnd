@@ -2,12 +2,11 @@ import Layout from '../../components/Layout/Layout';
 import Space from '../../components/Space/Space';
 import MyAvatar from '../../myComponent/MyAvatar/MyAvatar';
 import Divider from '../../myComponent/Divider/Divider';
-import MyButton from '../../components/Button/Button';
 // Header
 import Breadcrumb from '../../components/Breadcrumb/Breadcrumb';
 import Avatar from '../../components/Avatar/Avatar';
 import Logo from '../../components/Logo/Logo';
-import { ButtonList } from '../../components/Button/Button';
+import { ButtonList, Button } from '../../components/Button/Button';
 // Content
 import CreateCard from './components/CreateCard/CreateCard';
 import DeployCard from './components/DeployCard/DeployCard';
@@ -21,7 +20,19 @@ import Steps from './components/Steps/Steps';
 
 const { Header, Content, Sider } = Layout;
 
-function ClonePage() {
+let description = {
+  go: 'A Nuxt.js app, bootstrapped with create-nuxt-app.',
+};
+function changePathOfLocation(path) {
+  
+  location.path = location.pathname = path;
+
+  console.log(location);
+}
+function ClonePage({ location, history }) {
+  console.log(history);
+
+  let { template } = location.query;
   // Header
   let buttonListSettings = [
     {
@@ -75,22 +86,31 @@ function ClonePage() {
       </Header>
       <Space type="spacer" size={72} />
       <Content>
+        <Button
+          type="link"
+          onClick={() => {
+            changePathOfLocation('/new');
+          }}
+        >
+          back
+        </Button>
+
         <Narrative {...narrativeSettings} />
         <Space type="spacer" size={48} />
         <Layout>
           <Sider>
             <FrameworkCard
               type="clone"
-              title="go"
-              description="A Nuxt.js app, bootstrapped with create-nuxt-app."
+              title={template}
+              description={description[template]}
             />
             <Space type="spacer" size={48} />
             <Steps info={stepsInfo} />
             <Space type="spacer" size={40} />
             <Divider />
             <Space type="spacer" size={24} />
-            <MyButton {...importButtonSettings} />
-            <MyButton {...cloneButtonSettings} />
+            <Button {...importButtonSettings} />
+            <Button {...cloneButtonSettings} />
           </Sider>
 
           <Space type="spacer" size={144} />

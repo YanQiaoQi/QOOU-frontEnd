@@ -1,5 +1,6 @@
 import Space from '../../../../components/Space/Space';
 import Text from '../../../../components/Text/Text';
+import { Link } from 'umi';
 import styles from './FrameworkCard.less';
 
 function FrameworkCard({ type = 'new', title, action, description }) {
@@ -7,8 +8,10 @@ function FrameworkCard({ type = 'new', title, action, description }) {
     case 'new': {
       return (
         <div className={styles.new_FrameworkCard_container} onClick={action}>
-          <div className={styles['new_FrameworkCard_image_' + title]}></div>
-          <div className={styles.FrameworkCard_title}>{title}</div>
+          <Link to={`/new/clone?template=${title}`}>
+            <div className={styles['new_FrameworkCard_image_' + title]}></div>
+            <div className={styles.FrameworkCard_title}>{title}</div>
+          </Link>
         </div>
       );
     }

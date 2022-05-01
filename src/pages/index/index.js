@@ -4,7 +4,7 @@ import Space from '../../components/Space/Space';
 import Layout from '../../components/Layout/Layout';
 // import Header from '../../components/Header/Header';
 import Introduction from './components/Introduction/Introduction';
-import { ButtonList, MyButton } from '../../components/Button/Button';
+import { ButtonList, Button } from '../../components/Button/Button';
 import Logo from '../../components/Logo/Logo';
 import PopUpWindow from '../../components/PopUpWindow/PopUpWindow';
 
@@ -23,12 +23,10 @@ function IndexPage({ curyDispatch }) {
     setMode(val);
   };
 
-  // 组件设置
-  // 登录，注册
   let buttonListSettings = [
     {
       title: 'Login',
-      action: curySetMode({
+      onClick: curySetMode({
         isActive: true,
         title: '请输入以下信息',
         info: [
@@ -47,11 +45,11 @@ function IndexPage({ curyDispatch }) {
         ],
         type: 'index/register',
       }),
-      type: 'common',
+      type: 'text',
     },
     {
       title: 'Sign Up',
-      action: curySetMode({
+      onClick: curySetMode({
         isActive: true,
         title: '请输入以下信息',
         info: [
@@ -70,20 +68,17 @@ function IndexPage({ curyDispatch }) {
         ],
         type: 'index/register',
       }),
-      type: 'signUp',
+      type: 'text',
+      style: {
+        backgroundColor: 'black',
+        color: 'white',
+        padding: '0 12px',
+        borderRadius: '5px',
+      },
     },
   ];
-  let introSettings = {
-    text: [
-      { text: 'Develop.', startColor: '#007cf0', endColor: '#00dfd8' },
-      { text: 'Preview.', startColor: '#7928CA', endColor: '#FF0080' },
-      { text: 'Ship.', startColor: '#FF4D4D', endColor: '#F9CB28' },
-    ],
-  };
-  // 主按钮
   let buttonSettings = {
-    title: 'Start with Github',
-    action: curySetMode({
+    onClick: curySetMode({
       isActive: true,
       title: '请输入以下信息',
       info: [
@@ -102,7 +97,17 @@ function IndexPage({ curyDispatch }) {
       ],
       type: 'index/register',
     }),
-    type: 'main',
+    type: 'text',
+    size: 'personal',
+    style: {
+      backgroundColor: 'black',
+      color: 'white',
+      fontSize: '1rem',
+      fontWeight: '500',
+      padding: '10px 25px',
+      border: '1px solid #eaeaea',
+      borderRadius: '5px',
+    },
   };
 
   let PopUpSettings = {
@@ -119,12 +124,15 @@ function IndexPage({ curyDispatch }) {
       </Header>
       <Content>
         <Space type="spacer" size={8} />
-        <Introduction {...introSettings} />
+        <Introduction />
         <Space type="spacer" size={56} />
-        <MyButton {...buttonSettings} />
+        <Button {...buttonSettings} block>
+          Start with Github
+        </Button>
+        <Space type="spacer" size={56} />
       </Content>
+
       <PopUpWindow {...PopUpSettings} />
-      <Space type="spacer" size={56} />
     </Layout>
   );
 }

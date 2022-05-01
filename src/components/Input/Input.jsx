@@ -1,6 +1,6 @@
 import styles from './Input.less';
 
-function Input({ size = 'middle', placeholder = '', prefix }) {
+function Input({ size = 'middle', placeholder = '', prefix, value }) {
   if (prefix) {
     return (
       <span className={wrapperClassName}>
@@ -37,12 +37,13 @@ function Input({ size = 'middle', placeholder = '', prefix }) {
   let wrapperClassName = styles['input_wrapper_' + size];
   let inputClassName = styles['input'];
   return (
-      <input
-        className={inputClassName}
-        type="text"
-        placeholder={placeholder}
-        style={heightStyle}
-      />
+    <input
+      className={inputClassName}
+      type="text"
+      placeholder={placeholder}
+      value={value}
+      style={heightStyle}
+    />
   );
 }
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import Space from '../Space/Space';
+import { combineClassNames } from '../../utils/common';
 import styles from './Button.less';
 
 let defaultSettings = {
@@ -20,28 +21,80 @@ let defaultSettings = {
  *          main
  * @returns
  */
-function MyButton({
+function Button({
   children,
-  title,
-  action,
   type = 'common',
+  htmlType = 'button',
+  disabled = false,
+  ghost = false,
+  danger = false,
+  loading = false,
+  block = false,
+  size = 'middle',
+  shape = 'default',
+  icon,
+  href,
+  target,
+  onClick,
+  className,
   style,
 } = defaultSettings) {
+  let buttonClassName = combineClassNames(
+    styles['myDesign_btn_' + type],
+    styles['myDesign_btn_' + size],
+  );
+  if (className !== undefined) {
+    buttonClassName = combineClassNames(buttonClassName, className);
+  }
+  if (href !== undefined) {
+    return (
+      <a
+        href={href}
+        target={target}
+        className={buttonClassName}
+        style={style}
+        onClick={onClick}
+      >
+        <span>{children}</span>
+      </a>
+    );
+  }
+  if (icon !== undefined) {
+    return (
+      <button
+        type={htmlType}
+        className={buttonClassName}
+        style={style}
+        onClick={onClick}
+      >
+        <span>{children}</span>
+      </button>
+    );
+  }
   return (
-    <div className={styles[type]} onClick={action} style={style}>
-      <span>{children ? children : title ? title : 'button'}</span>
-    </div>
+    <button
+      type={htmlType}
+      className={buttonClassName}
+      style={style}
+      onClick={onClick}
+    >
+      <span>{children}</span>
+    </button>
   );
 }
 
 function ButtonList({ ui }) {
   let ButtonList = ui.map((item) => {
-    return <MyButton key={item.title} {...item} />;
+    return (
+      <Button key={item.title} {...item}>
+        {item.title}
+      </Button>
+    );
   });
 
-  //   return <div className={styles.ButtonList_container}>{ButtonList}</div>;
+  //   return <button className={styles.ButtonList_container}>{ButtonList}</button>;
   return <Space size="large">{ButtonList}</Space>;
 }
 
-export default MyButton;
-export { MyButton, ButtonList };
+export default Button;
+export { Button, ButtonList };

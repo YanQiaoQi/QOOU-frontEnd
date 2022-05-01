@@ -5,7 +5,7 @@ import Space from '../../components/Space/Space';
 import Breadcrumb from '../../components/Breadcrumb/Breadcrumb';
 import Logo from '../../components/Logo/Logo';
 import Avatar from '../../components/Avatar/Avatar';
-import { ButtonList, MyButton } from '../../components/Button/Button';
+import { ButtonList, Button } from '../../components/Button/Button';
 // content
 import Narrative from './components/Narrative/Narrative';
 import Cover from './components/Cover/Cover';
@@ -98,12 +98,12 @@ function NewPage({}) {
             <Space type="spacer" size={20} />
             <Space>
               <FrameworkCard title={'go'} />
-              {/* <FrameworkCard title={'go'} />
-              <FrameworkCard title={'go'} />
-              <FrameworkCard title={'go'} /> */}
+              <FrameworkCard />
+              <FrameworkCard />
+              <FrameworkCard />
             </Space>
             <Space type="spacer" size={24} />
-            <MyButton {...cloneButtonSettings} />
+            <Button {...cloneButtonSettings} />
           </Card>
         </Space>
         <Space type="spacer" size={96} />
