@@ -1,0 +1,41 @@
+@errorColor: #ff4d4f;
+
+.myDesign-btn-hasBorder-danger {
+  color: @errorColor;
+  border-color: @errorColor;
+  background: #fff;
+}
+
+.myDesign-btn-noBorder-danger {
+  color: @errorColor;
+  border-color: transparent;
+  background: 0 0;
+  box-shadow: none;
+}
+
+// primary
+.myDesign-btn-danger.myDesign-btn-primary {
+  border-color: @errorColor;
+  background: @errorColor;
+
+  color: #fff;
+
+  text-shadow: 0 -1px 0 rgb(0 0 0 / 12%);
+  box-shadow: 0 2px #0000000b;
+}
+// common
+.myDesign-btn-danger.myDesign-btn-common {
+  .myDesign-btn-hasBorder-danger;
+}
+// dashed
+.myDesign-btn-danger.myDesign-btn-dashed {
+  .myDesign-btn-hasBorder-danger;
+}
+// text
+.myDesign-btn-danger.myDesign-btn-text {
+  .myDesign-btn-noBorder-danger;
+}
+// link
+.myDesign-btn-danger.myDesign-btn-link {
+  .myDesign-btn-noBorder-danger;
+}

@@ -3,14 +3,12 @@
 .myDesign-btn:focus {
   outline: 0;
 }
-.myDesign_btn {
+.myDesign-btn {
   // 布局定位属性
   display: inline-block;
   position: relative;
   // 自身属性
-  border: 1px solid transparent;
-  border-color: #d9d9d9;
-  border-radius: 2px;
+  border: 1px solid #d9d9d9;
   background-image: none;
   background: #fff;
   // 文本属性
@@ -20,6 +18,7 @@
   line-height: 1.5715;
   white-space: nowrap;
   // 其他属性
+  border-radius: 2px;
   cursor: pointer;
   box-shadow: 0 2px #00000004;
   transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -32,60 +31,47 @@
   touch-action: manipulation;
 }
 
-.myDesign_btn_primary {
-  .myDesign_btn;
-  border-color: #1890ff;
-  background: #1890ff;
-  color: #fff;
-  text-shadow: 0 -1px 0 rgb(0 0 0 / 12%);
-  box-shadow: 0 2px #0000000b;
-}
-.myDesign_btn_personal {
+// size
+.myDesign-btn-personal {
   font-size: 16px;
   border-radius: 2px;
 }
-.myDesign_btn_large {
+.myDesign-btn-large {
   height: 40px;
   padding: 6.4px 15px;
   font-size: 16px;
   border-radius: 2px;
 }
-.myDesign_btn_middle {
+.myDesign-btn-middle {
   height: 32px;
   padding: 4px 15px;
   font-size: 14px;
   border-radius: 2px;
 }
-.myDesign_btn_small {
+.myDesign-btn-small {
   height: 24px;
   padding: 0 7px;
   font-size: 14px;
   border-radius: 2px;
 }
-.myDesign_btn_common {
-  .myDesign_btn;
+
+// block
+.myDesign-btn-block.myDesign-btn {
+  width: 100%;
 }
 
-.myDesign_btn_dashed {
-  .myDesign_btn;
-  color: #000000d9;
-  border-color: #d9d9d9;
-  background: #fff;
-  border-style: dashed;
-}
+// type
+@import url(./Button-type.less);
 
-.myDesign_btn_text {
-  .myDesign_btn;
-  color: #000000d9;
-  border-color: transparent;
-  background: 0 0;
-  box-shadow: none;
-}
+// shape
+@import url(./Button-shape.less);
 
-.myDesign_btn_link {
-  .myDesign_btn;
-  color: #1890ff;
-  border-color: transparent;
-  background: 0 0;
-  box-shadow: none;
-}
+// danger
+@import url(./Button-danger.less);
+
+// ghost
+
+// loading
+
+// disabled
+@import url(./Button-disabled.less);

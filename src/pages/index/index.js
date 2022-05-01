@@ -22,7 +22,7 @@ function IndexPage({ curyDispatch }) {
   const curySetMode = (val) => () => {
     setMode(val);
   };
-
+  
   let buttonListSettings = [
     {
       title: 'Login',
@@ -126,9 +126,8 @@ function IndexPage({ curyDispatch }) {
         <Space type="spacer" size={8} />
         <Introduction />
         <Space type="spacer" size={56} />
-        <Button {...buttonSettings} block>
-          Start with Github
-        </Button>
+
+        <Button {...buttonSettings}>Start with Github</Button>
         <Space type="spacer" size={56} />
       </Content>
 

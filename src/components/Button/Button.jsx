@@ -1,26 +1,8 @@
 import React from 'react';
 import Space from '../Space/Space';
 import { combineClassNames } from '../../utils/common';
-import styles from './Button.less';
+import styles from './css/index.less';
 
-let defaultSettings = {
-  title: '按钮',
-  action: function () {},
-  type: 'common',
-};
-
-/**
- *
- * @param {object} settings
- *  @property {string} title  按钮显示的字符
- *  @property {function} action 点击按钮触发的事件
- *  @property {string} width 按钮的宽度
- *  @property {string} type 按钮自己定义自己的风格，在没有设置按钮自有风格时，按按钮整体风格来
- *          common
- *          signUp
- *          main
- * @returns
- */
 function Button({
   children,
   type = 'common',
@@ -31,7 +13,7 @@ function Button({
   loading = false,
   block = false,
   size = 'middle',
-  shape = 'default',
+  shape = 'square',
   icon,
   href,
   target,
@@ -39,19 +21,48 @@ function Button({
   className,
   style,
 } = defaultSettings) {
-  let buttonClassName = combineClassNames(
-    styles['myDesign_btn_' + type],
-    styles['myDesign_btn_' + size],
+  let basicBtnClassName = 'myDesign-btn';
+  let btnClassName = combineClassNames(
+    styles[basicBtnClassName],
+    styles[`${basicBtnClassName}-${type}`],
+    styles[`${basicBtnClassName}-${size}`],
+    styles[`${basicBtnClassName}-${shape}`],
   );
   if (className !== undefined) {
-    buttonClassName = combineClassNames(buttonClassName, className);
+    btnClassName = combineClassNames(btnClassName, className);
   }
+  if (block === true) {
+    btnClassName = combineClassNames(
+      btnClassName,
+      styles[`${basicBtnClassName}-block`],
+    );
+  }
+
+  if (ghost === true) {
+    btnClassName = combineClassNames(
+      btnClassName,
+      styles[`${basicBtnClassName}-ghost`],
+    );
+  }
+  if (danger === true) {
+    btnClassName = combineClassNames(
+      btnClassName,
+      styles[`${basicBtnClassName}-danger`],
+    );
+  }
+  if (loading === true) {
+    btnClassName = combineClassNames(
+      btnClassName,
+      styles[`${basicBtnClassName}-loading`],
+    );
+  }
+
   if (href !== undefined) {
     return (
       <a
         href={href}
         target={target}
-        className={buttonClassName}
+        className={btnClassName}
         style={style}
         onClick={onClick}
       >
@@ -63,7 +74,7 @@ function Button({
     return (
       <button
         type={htmlType}
-        className={buttonClassName}
+        className={btnClassName}
         style={style}
         onClick={onClick}
       >
@@ -71,10 +82,17 @@ function Button({
       </button>
     );
   }
+  if (disabled === true) {
+    return (
+      <button disabled type={htmlType} className={btnClassName}>
+        <span>{children}</span>
+      </button>
+    );
+  }
   return (
     <button
       type={htmlType}
-      className={buttonClassName}
+      className={btnClassName}
       style={style}
       onClick={onClick}
     >
@@ -92,7 +110,7 @@ function ButtonList({ ui }) {
     );
   });
 
-  //   return <button className={styles.ButtonList_container}>{ButtonList}</button>;
+  //   return <button className={styles.ButtonList-container}>{ButtonList}</button>;
   return <Space size="large">{ButtonList}</Space>;
 }
 
