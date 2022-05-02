@@ -3,9 +3,10 @@ import Header from './components/Header/Header';
 import Content from './components/Content/Content';
 import Sider from './components/Sider/Sider';
 import Footer from './components/Footer/Footer';
+import { combineClassNames } from '../../utils/common';
 import styles from './Layout.less';
 
-function Layout({ children, style }) {
+function Layout({ children, className, style }) {
   let hasSider = false;
   children.forEach((element) => {
     let elementType = element.type;
@@ -13,11 +14,28 @@ function Layout({ children, style }) {
       hasSider = true;
     }
   });
-  let containerClassName = hasSider
-    ? styles.layout_container_has_sider
-    : styles.layout_container;
+  
+  let basicClassName = 'myDesign-layout';
+  let layoutClassName = styles[basicClassName];
+  if (className !== undefined) {
+    if (typeof className === 'string') {
+      layoutClassName = combineClassNames(layoutClassName, className);
+    } else {
+      console.error('类名应为字符串');
+    }
+  }
+  if (hasSider) {
+    layoutClassName = combineClassNames(
+      layoutClassName,
+      styles[`${basicClassName}-has-sider`],
+    );
+  }
 
-  return <section className={containerClassName} style={style}>{children}</section>;
+  return (
+    <section className={layoutClassName} style={style}>
+      {children}
+    </section>
+  );
 }
 Layout.Header = Header;
 Layout.Content = Content;

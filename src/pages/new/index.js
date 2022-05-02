@@ -57,6 +57,7 @@ function NewPage({}) {
       fontWeight: '500',
       lineHeight: '1.6',
     },
+    type: 'text',
   };
   return (
     <Layout>
@@ -74,7 +75,7 @@ function NewPage({}) {
         </Breadcrumb>
 
         <Space size={32}>
-          <ButtonList ui={buttonListSettings} />
+          <ButtonList ButtonsSetting={buttonListSettings} />
           <Avatar
             shape="circle"
             size={32}
@@ -103,7 +104,9 @@ function NewPage({}) {
               <FrameworkCard />
             </Space>
             <Space type="spacer" size={24} />
-            <Button {...cloneButtonSettings} />
+            <Button {...cloneButtonSettings}>
+              {cloneButtonSettings.title}
+            </Button>
           </Card>
         </Space>
         <Space type="spacer" size={96} />

@@ -24,7 +24,6 @@ let description = {
   go: 'A Nuxt.js app, bootstrapped with create-nuxt-app.',
 };
 function changePathOfLocation(path) {
-  
   location.path = location.pathname = path;
 
   console.log(location);
@@ -80,7 +79,7 @@ function ClonePage({ location, history }) {
           <MyAvatar hasUsername={true} />
         </Breadcrumb>
         <Space size={32}>
-          <ButtonList ui={buttonListSettings} />
+          <ButtonList ButtonsSetting={buttonListSettings} />
           <MyAvatar hasUsername={false} />
         </Space>
       </Header>

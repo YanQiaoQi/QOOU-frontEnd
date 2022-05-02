@@ -24,7 +24,7 @@ function Button({
   let isLink = false;
   let hasIcon = false;
   let hasChildren = false;
-  let isOnlyIcon = false;
+  let isIconOnly = false;
   let isDisabled = false;
   if (href !== undefined) {
     isLink = true;
@@ -34,7 +34,7 @@ function Button({
   }
   if (icon !== undefined) {
     hasIcon = true;
-    isOnlyIcon = hasIcon && !hasChildren;
+    isIconOnly = hasIcon && !hasChildren;
   }
   if (disabled === true) {
     isDisabled = true;
@@ -47,7 +47,7 @@ function Button({
     styles[`${basicBtnClassName}-${size}`],
     styles[`${basicBtnClassName}-${shape}`],
   );
-  if (isOnlyIcon) {
+  if (isIconOnly) {
     btnClassName = combineClassNames(
       btnClassName,
       styles[`${basicBtnClassName}-icon-only`],
@@ -62,6 +62,7 @@ function Button({
       styles[`${basicBtnClassName}-block`],
     );
   }
+
   if (ghost === true) {
     btnClassName = combineClassNames(
       btnClassName,
@@ -83,6 +84,7 @@ function Button({
 
   return isLink ? (
     <a
+      disabled={isDisabled}
       href={href}
       target={target}
       className={btnClassName}
@@ -93,6 +95,7 @@ function Button({
     </a>
   ) : (
     <button
+      disabled={isDisabled}
       type={htmlType}
       className={btnClassName}
       style={!isDisabled ? style : null}
@@ -104,8 +107,8 @@ function Button({
   );
 }
 
-function ButtonList({ ui }) {
-  let ButtonList = ui.map((item) => {
+function ButtonList({ ButtonsSetting, gap }) {
+  let ButtonList = ButtonsSetting.map((item) => {
     return (
       <Button key={item.title} {...item}>
         {item.title}
@@ -113,8 +116,7 @@ function ButtonList({ ui }) {
     );
   });
 
-  //   return <button className={styles.ButtonList-container}>{ButtonList}</button>;
-  return <Space size="large">{ButtonList}</Space>;
+  return <Space size={gap}>{ButtonList}</Space>;
 }
 
 export default Button;

@@ -112,15 +112,14 @@ function IndexPage({ curyDispatch }) {
 
   return (
     <Layout>
-      <Header type="sticky">
+      <Header type="common">
         <Logo type="SVG" />
-        <ButtonList ui={buttonListSettings} />
+        <ButtonList ButtonsSetting={buttonListSettings} />
       </Header>
       <Content>
         <Space type="spacer" size={8} />
         <Introduction />
         <Space type="spacer" size={56} />
-
         <Button {...buttonSettings}>Start with Github</Button>
         <Space type="spacer" size={56} />
       </Content>
