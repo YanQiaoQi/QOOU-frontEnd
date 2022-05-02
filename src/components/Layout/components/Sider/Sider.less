@@ -1,17 +1,20 @@
-.sider_container {
+.myDesign-layout-sider {
   display: flex;
   flex-direction: column;
+  width: var(--width, 100%);
 }
-.common_sider_container {
-  .sider_container;
+.myDesign-layout-sider-common {
+  .myDesign-layout-sider;
 }
 
-.sticky_sider_container {
-  .sider_container;
+.myDesign-layout-sider-sticky {
   position: sticky;
-  top: var(--top, 0px);
+  top: var(--top, 0);
+  left: var(--left, 0);
 }
 
-.fixed_sider_container {
-  .sider_container;
+.myDesign-layout-sider-fixed {
+  position: fixed;
+  top: var(--top, 0);
+  left: var(--left, 0);
 }

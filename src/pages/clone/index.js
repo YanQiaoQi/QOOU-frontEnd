@@ -25,9 +25,8 @@ let description = {
 };
 function changePathOfLocation(path) {
   location.path = location.pathname = path;
-
-  console.log(location);
 }
+
 function ClonePage({ location, history }) {
   console.log(history);
 

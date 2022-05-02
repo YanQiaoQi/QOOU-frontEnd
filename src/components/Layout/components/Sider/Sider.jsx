@@ -1,16 +1,17 @@
+import { combineClassNames } from '../../../../utils/common';
 import styles from './Sider.less';
 
-/**
- *
- * @param {String} width
- * @returns
- */
-function Sider({ type = 'common', children, width, style }) {
+function Sider({ children, type = 'common', className, style }) {
+  let basicClassName = 'myDesign-layout-sider';
+  let siderClassName = combineClassNames(
+    styles[basicClassName],
+    styles[`${basicClassName}-${type}`],
+  );
+  if (className !== undefined) {
+    siderClassName = combineClassNames(siderClassName, className);
+  }
   return (
-    <aside
-      className={styles[type + '_sider_container']}
-      style={{ ...style, '--width': width }}
-    >
+    <aside className={styles[type + '_sider_container']} style={style}>
       {children}
     </aside>
   );
