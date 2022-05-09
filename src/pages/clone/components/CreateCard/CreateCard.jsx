@@ -1,7 +1,7 @@
-import Space from '../../../../components/Space/Space';
+import { Space, Spacer } from '../../../../components/Space/Space';
 import Card from '../../../../components/Card/Card';
 import Text from '../../../../components/Text/Text';
-import Divider from '../../../../myComponent/Divider/Divider';
+import Divider from '../../../../components/Divider/Divider';
 import CloneInput from '../CloneInput/CloneInput';
 import Radio from '../../../../components/Radio/Radio';
 import MyButton from '../../../../components/Button/Button';
@@ -16,7 +16,6 @@ function CreateCard({ isActive = false }) {
       style={{ width: '640px' }}
       headStyle={headStyle}
     >
-      <Space type="spacer" size={16} />
       <Divider />
       <Text style={{ margin: '24px 0', ...headStyle }}>
         To ensure you can easily update your project after deploying it, a Git
@@ -31,7 +30,7 @@ function CreateCard({ isActive = false }) {
           inputWidth="320px"
         />
       </Space>
-      <Space type="spacer" size={24} />
+      <Spacer size={24} />
       <Space type="space-between" style={{ padding: '0 4px' }}>
         <Radio checked={true}>Create private Git Repository</Radio>
         <MyButton type="primary" style={{ alignSelf: 'flex-end' }}>

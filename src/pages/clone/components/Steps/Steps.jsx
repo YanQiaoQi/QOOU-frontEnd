@@ -1,4 +1,4 @@
-import Space from '../../../../components/Space/Space';
+import {Space,Spacer} from '../../../../components/Space/Space';
 import styles from './Steps.less';
 
 function Step({ content, isLast = false, isActive }) {

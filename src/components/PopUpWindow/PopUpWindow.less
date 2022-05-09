@@ -1,64 +1,73 @@
-.activeContainer {
+@padding: 24px;
+.myDesign-popupwindow-window {
   display: flex;
   justify-content: center;
   align-items: center;
   position: fixed;
-  font-size: 17px;
   top: 0px;
   right: 0px;
   bottom: 0px;
   left: 0px;
-  z-index: 1000;
 
   background-color: rgba(0, 0, 0, 0.3);
+
+  font-size: 17px;
+
+  z-index: 1000;
 }
-.inactiveContainer {
-  display: none;
-}
-.windowContainer {
+.myDesign-popupwindow-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 24px;
-  background-color: #fff;
+  position: relative;
+
+  padding: @padding;
   border-radius: 5px;
+  background-color: #fff;
 }
-.windowTopContainer {
+.myDesign-popupwindow-top-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 270px;
+  align-items: center;
+  position: relative;
+
+  width: 100%;
+  margin-bottom: 16px;
 }
-.windowTitle {
-  margin-bottom: 10px;
-}
-.windowCloseBtn {
+// .myDesign-popupwindow-title {
+// }
+.myDesign-popupwindow-closeBtn {
   width: 20px;
   height: 20px;
   background-image: url(../../assets/hoverCloseWindow.png);
   cursor: pointer;
 }
-.windowBtnContainer {
-  width: 250px;
+.myDesign-popupwindow-closeBtn:hover {
+  opacity: 0.4;
+}
+
+.myDesign-popupwindow-input-container {
+}
+.myDesign-popupwindow-input-item-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.myDesign-popupwindow-input-item-label {
+  margin-right: 16px;
+}
+.myDesign-popupwindow-confirmBtn {
+  width: 100%;
   height: 40px;
   padding: 0px 10px;
-  border-radius: 4px;
   border: 1px solid #007fff;
+  border-radius: 4px;
+  background-color: #007fff;
+
+  color: white;
   text-align: center;
   line-height: 40px;
-  background-color: #007fff;
-  color: white;
   cursor: pointer;
-}
-.itemContainer {
-  margin-bottom: 10px;
-}
-.itemInput {
-  outline: none;
-  width: 250px;
-  height: 40px;
-  padding: 0px 10px;
-  border: 1px solid #e9e9e9;
-  font-size: 15px;
 }

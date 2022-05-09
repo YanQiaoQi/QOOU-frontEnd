@@ -1,17 +1,12 @@
 import styles from './Input.less';
 
-function Input({ size = 'middle', placeholder = '', prefix, value }) {
-  if (prefix) {
-    return (
-      <span className={wrapperClassName}>
-        <input
-          className={inputClassName}
-          type="text"
-          placeholder={placeholder}
-        />
-      </span>
-    );
-  }
+function Input({
+  type = 'text',
+  size = 'middle',
+  placeholder,
+  defaultValue,
+  onChange,
+}) {
   let getDistenceFromSize = (size, key) => {
     let typeOfData = (data) => {
       return Object.prototype.toString.call(data).slice(8, -1);
@@ -34,15 +29,15 @@ function Input({ size = 'middle', placeholder = '', prefix, value }) {
     }
   };
   let heightStyle = getDistenceFromSize(size, '--height');
-  let wrapperClassName = styles['input_wrapper_' + size];
   let inputClassName = styles['input'];
   return (
     <input
       className={inputClassName}
-      type="text"
+      type={type}
       placeholder={placeholder}
-      value={value}
+      value={defaultValue}
       style={heightStyle}
+      onChange={onChange()}
     />
   );
 }

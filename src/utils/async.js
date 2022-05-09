@@ -1,6 +1,7 @@
 import request from 'umi-request';
+import { standerdRequestBody } from './requestBodyModel';
 
-const baseURL = 'http://172.22.24.251:8080/api/v1';
+const baseURL = 'http://newtest.simpfun.cn/api';
 
 export const get = async (path, callback) => {
   return request
@@ -18,17 +19,19 @@ export const get = async (path, callback) => {
 };
 
 export const post = async (path, reqBody, callback) => {
+  let requestBody = standerdRequestBody(reqBody, 'post', path);
   return request
     .post(`${baseURL}/${path}`, {
-      data: reqBody,
+      data: requestBody,
       // headers: {
       //   Authorization: localStorage.getItem('token'),
       // },
     })
     .then((res) => {
-      if (callback) {
-        callback(res)();
-      }
+      // if (callback) {
+      //   callback(res)();
+      // }
+      console.log(res);
       return res;
     })
     .catch((err) => {

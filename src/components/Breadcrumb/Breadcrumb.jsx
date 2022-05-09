@@ -1,5 +1,4 @@
-import Space from '../Space/Space';
-import Logo from '../Logo/Logo';
+import { Space } from '../Space/Space';
 import styles from './Breadcrumb.less';
 
 function Item({ children, type = 'common' }) {
@@ -24,7 +23,8 @@ function Item({ children, type = 'common' }) {
   }
   return <div>{children}</div>;
 }
-function Breadcrumb({ children = [] }) {
+
+function Breadcrumb({ children }) {
   let curChildren = children;
   if (!Array.isArray(children)) curChildren = [children];
   let target = curChildren.map((item, index) => {

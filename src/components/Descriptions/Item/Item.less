@@ -1,0 +1,36 @@
+.meDesign-descriptions-item {
+  padding-bottom: 0;
+  vertical-align: top;
+}
+
+.meDesign-descriptions-item-container {
+  display: flex;
+}
+.meDesign-descriptions-item-label {
+  width: 120px;
+  color: #888;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.5715;
+  text-align: start;
+}
+.meDesign-descriptions-item-label:after {
+  content: ':';
+  position: relative;
+  top: -0.5px;
+  margin: 0 8px 0 2px;
+}
+.meDesign-descriptions-item-content {
+  display: table-cell;
+  flex: 1;
+  color: #000000d9;
+  font-size: 14px;
+  line-height: 1.5715;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+.meDesign-descriptions-item-container .meDesign-descriptions-item-label,
+.meDesign-descriptions-item-container .meDesign-descriptions-item-content {
+  display: inline-flex;
+  align-items: baseline;
+}

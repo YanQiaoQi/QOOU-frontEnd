@@ -1,20 +1,31 @@
+import Space from '../Space/Space';
 import styles from './Card.less';
 
-/**
- *
- * @param {String} type
- *      common default
- * @param {String} title
- *      common default
- * @returns
- */
-function Card({ type = 'common', title, children = null, style, headStyle }) {
+function Card({
+  children,
+  type = 'common',
+  title,
+  extra,
+  style,
+  headStyle,
+  bodyStyle,
+}) {
+  let hasExtra = false;
+  if (extra !== undefined) {
+    hasExtra = true;
+  }
+
+  let basicClassName = 'myDesign-card';
   return (
-    <div className={styles[type + '_card_container']} style={style}>
-      <div className={styles.card_title} style={headStyle}>
-        {title}
+    <div className={styles[`${basicClassName}-${type}`]} style={style}>
+      <div
+        className={styles[`${basicClassName}-head-container`]}
+        style={headStyle}
+      >
+        <div className={styles[`${basicClassName}-title`]}>{title}</div>
+        {hasExtra ? <Space>{extra}</Space> : null}
       </div>
-      {children}
+      <div style={bodyStyle}>{children}</div>
     </div>
   );
 }

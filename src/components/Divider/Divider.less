@@ -1,0 +1,58 @@
+.myDesign-divider {
+  box-sizing: border-box;
+
+  padding: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  margin: 0;
+
+  color: #000000d9;
+  font-size: 14px;
+  font-variant: tabular-nums;
+  line-height: 1.5715;
+  list-style: none;
+  font-feature-settings: 'tnum';
+}
+
+.myDesign-divider-row {
+  display: flex;
+  clear: both;
+  width: 100%;
+  min-width: 100%;
+  margin: var(--margin, 16px) 0;
+}
+.myDesign-divider-column {
+  position: relative;
+  top: -0.06em;
+  display: inline-block;
+  height: 0.9em;
+  margin: 0 8px;
+  vertical-align: middle;
+  border-top: 0;
+  border-left: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.myDesign-divider-has-title.myDesign-divider {
+  display: flex;
+  margin: 16px 0;
+  color: #000000d9;
+  font-weight: 500;
+  font-size: 16px;
+  white-space: nowrap;
+  text-align: center;
+  border-top: 0;
+  border-top-color: #0000000f;
+}
+.myDesign-divider-title {
+  display: inline-block;
+  padding: 0 1em;
+}
+.myDesign-divider-has-title-center.myDesign-divider:before,
+.myDesign-divider-has-title-center.myDesign-divider:after {
+  position: relative;
+  top: 50%;
+  width: 50%;
+  border-top: 1px solid transparent;
+  border-top-color: inherit;
+  border-bottom: 0;
+  content: '';
+}

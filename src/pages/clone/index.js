@@ -1,36 +1,25 @@
 import Layout from '../../components/Layout/Layout';
-import Space from '../../components/Space/Space';
-import MyAvatar from '../../myComponent/MyAvatar/MyAvatar';
-import Divider from '../../myComponent/Divider/Divider';
+import { Space, Spacer } from '../../components/Space/Space';
+import Divider from '../../components/Divider/Divider';
 // Header
 import Breadcrumb from '../../components/Breadcrumb/Breadcrumb';
-import Avatar from '../../components/Avatar/Avatar';
+import MyAvatar from '../../myComponent/MyAvatar/MyAvatar';
 import Logo from '../../components/Logo/Logo';
 import { ButtonList, Button } from '../../components/Button/Button';
 // Content
 import CreateCard from './components/CreateCard/CreateCard';
 import DeployCard from './components/DeployCard/DeployCard';
 import Narrative from '../new/components/Narrative/Narrative';
-import Radio from '../../components/Radio/Radio';
 // Sider
 import FrameworkCard from '../new/components/FrameworkCard/FrameworkCard';
 import Steps from './components/Steps/Steps';
-// import Card from '../../components/Card/Card';
-// import Text from '../../components/Text/Text';
+
+import { changePathOfLocation } from '../../utils/common';
 
 const { Header, Content, Sider } = Layout;
 
-let description = {
-  go: 'A Nuxt.js app, bootstrapped with create-nuxt-app.',
-};
-function changePathOfLocation(path) {
-  location.path = location.pathname = path;
-}
-
-function ClonePage({ location, history }) {
-  console.log(history);
-
-  let { template } = location.query;
+function ClonePage({ location }) {
+  let { template = 'go' } = location.query;
   // Header
   let buttonListSettings = [
     {
@@ -56,18 +45,22 @@ function ClonePage({ location, history }) {
   ];
   let importButtonSettings = {
     title: 'Import a different Git Repository →',
+    type: 'text',
     style: {
       fontSize: '0.875rem',
       fontWeight: '500',
       lineHeight: '1.6',
+      alignSelf: 'flex-start',
     },
   };
   let cloneButtonSettings = {
     title: 'Browse All Templates →',
+    type: 'text',
     style: {
       fontSize: '0.875rem',
       fontWeight: '500',
       lineHeight: '1.6',
+      alignSelf: 'flex-start',
     },
   };
   return (
@@ -75,14 +68,14 @@ function ClonePage({ location, history }) {
       <Header type="sticky">
         <Breadcrumb>
           <Logo type="simple" info="32px" />
-          <MyAvatar hasUsername={true} />
+          <MyAvatar username="yanqiaoqi" />
         </Breadcrumb>
         <Space size={32}>
           <ButtonList ButtonsSetting={buttonListSettings} />
-          <MyAvatar hasUsername={false} />
+          <MyAvatar />
         </Space>
       </Header>
-      <Space type="spacer" size={72} />
+      <Spacer size={72} />
       <Content>
         <Button
           type="link"
@@ -92,33 +85,32 @@ function ClonePage({ location, history }) {
         >
           back
         </Button>
-
         <Narrative {...narrativeSettings} />
-        <Space type="spacer" size={48} />
+        <Spacer size={48} />
         <Layout>
           <Sider>
-            <FrameworkCard
-              type="clone"
-              title={template}
-              description={description[template]}
-            />
-            <Space type="spacer" size={48} />
+            <FrameworkCard type="clone" title={template} />
+            <Spacer size={48} />
             <Steps info={stepsInfo} />
-            <Space type="spacer" size={40} />
+            <Spacer size={40} />
             <Divider />
-            <Space type="spacer" size={24} />
-            <Button {...importButtonSettings} />
-            <Button {...cloneButtonSettings} />
+            <Spacer size={24} />
+            <Button {...importButtonSettings}>
+              {importButtonSettings.title}
+            </Button>
+            <Button {...cloneButtonSettings}>
+              {cloneButtonSettings.title}
+            </Button>
           </Sider>
 
-          <Space type="spacer" size={144} />
+          <Spacer size={72} />
 
           <Content>
             <Space direction="column" size={48}>
               <CreateCard isActive={true} />
               <DeployCard isActive={false} />
             </Space>
-            <Space type="spacer" size={96} />
+            <Spacer size={96} />
           </Content>
         </Layout>
       </Content>

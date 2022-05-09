@@ -1,4 +1,4 @@
-import Space from '../Space/Space';
+import {Space,Spacer} from '../Space/Space';
 import styles from './Avatar.less';
 
 /**

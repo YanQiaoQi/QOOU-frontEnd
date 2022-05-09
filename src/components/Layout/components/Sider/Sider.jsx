@@ -11,7 +11,7 @@ function Sider({ children, type = 'common', className, style }) {
     siderClassName = combineClassNames(siderClassName, className);
   }
   return (
-    <aside className={styles[type + '_sider_container']} style={style}>
+    <aside className={siderClassName} style={style}>
       {children}
     </aside>
   );

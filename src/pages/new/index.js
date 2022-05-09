@@ -1,16 +1,15 @@
 import { connect } from 'dva';
 import Layout from '../../components/Layout/Layout';
-import Space from '../../components/Space/Space';
+import { Space, Spacer } from '../../components/Space/Space';
 // Header
 import Breadcrumb from '../../components/Breadcrumb/Breadcrumb';
 import Logo from '../../components/Logo/Logo';
-import Avatar from '../../components/Avatar/Avatar';
+import MyAvatar from '../../myComponent/MyAvatar/MyAvatar';
 import { ButtonList, Button } from '../../components/Button/Button';
 // content
 import Narrative from './components/Narrative/Narrative';
 import Cover from './components/Cover/Cover';
-import Card from '../../components/Card/Card';
-import FrameworkCard from './components/FrameworkCard/FrameworkCard';
+import CloneCard from './components/CloneCard/CloneCard';
 // Footer
 import CurFooter from './components/CurFooter/CurFooter';
 
@@ -21,7 +20,9 @@ function NewPage({}) {
     title: 'Lets build something new',
     description:
       'To deploy a new Project, import an existing Git Repository or get started with one of our Templates.',
+    style: { padding: '48px 0 72px 0' },
   };
+  
   let buttonListSettings = [
     {
       title: 'Feedback',
@@ -34,86 +35,33 @@ function NewPage({}) {
       type: 'text',
     },
   ];
-  let importCardSetting = {
-    type: 'import',
-    title: 'Import Git Repository',
-  };
-  let cloneCardSettings = {
-    type: 'clone',
-    title: 'Clone Template',
-  };
-  let importButtonSettings = {
-    title: 'Import Third-Party Git Repository →',
-    style: {
-      fontSize: '0.875rem',
-      fontWeight: '500',
-      lineHeight: '1.6',
-    },
-  };
-  let cloneButtonSettings = {
-    title: 'Browse All Templates →',
-    style: {
-      fontSize: '0.875rem',
-      fontWeight: '500',
-      lineHeight: '1.6',
-    },
-    type: 'text',
-  };
+
   return (
     <Layout>
       <Header type="sticky">
         <Breadcrumb>
           <Logo type="simple" info="32px" />
-          <Avatar
-            shape="circle"
-            size={32}
-            username="YanQiaoQi"
-            iconStyle={{
-              backgroundImage: 'linear-gradient(90deg, #007cf0, #ff0080)',
-            }}
-          />
+          <MyAvatar username="YanQiaoQi" />
         </Breadcrumb>
 
         <Space size={32}>
           <ButtonList ButtonsSetting={buttonListSettings} />
-          <Avatar
-            shape="circle"
-            size={32}
-            iconStyle={{
-              backgroundImage: 'linear-gradient(90deg, #007cf0, #ff0080)',
-            }}
-          />
+          <MyAvatar />
         </Space>
       </Header>
+
       <Cover />
+
       <Content>
-        <Space type="spacer" size={48} />
         <Narrative {...narrativeSettings} />
-        <Space type="spacer" size={72} />
         <Space size={48}>
-          {/* <Card {...importCardSetting}>
-            <Space type="spacer" size="424px" />
-            <MyButton {...importButtonSettings} />
-          </Card> */}
-          <Card {...cloneCardSettings}>
-            <Space type="spacer" size={20} />
-            <Space>
-              <FrameworkCard title={'go'} />
-              <FrameworkCard />
-              <FrameworkCard />
-              <FrameworkCard />
-            </Space>
-            <Space type="spacer" size={24} />
-            <Button {...cloneButtonSettings}>
-              {cloneButtonSettings.title}
-            </Button>
-          </Card>
+          <CloneCard />
         </Space>
-        <Space type="spacer" size={96} />
+        <Spacer size={96} />
       </Content>
+
       <Footer>
         <CurFooter />
-        <Space type="spacer" size={24} />
       </Footer>
     </Layout>
   );

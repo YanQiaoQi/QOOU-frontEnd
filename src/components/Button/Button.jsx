@@ -1,7 +1,7 @@
 import React from 'react';
-import Space from '../Space/Space';
+import { Space, Spacer } from '../Space/Space';
 import { combineClassNames } from '../../utils/common';
-import styles from './css/index.less';
+import styles from './Button.less';
 
 function Button({
   children,
@@ -39,7 +39,6 @@ function Button({
   if (disabled === true) {
     isDisabled = true;
   }
-
   let basicBtnClassName = 'myDesign-btn';
   let btnClassName = combineClassNames(
     styles[basicBtnClassName],
@@ -107,8 +106,8 @@ function Button({
   );
 }
 
-function ButtonList({ ButtonsSetting, gap }) {
-  let ButtonList = ButtonsSetting.map((item) => {
+function ButtonList({ options = [], gap }) {
+  let ButtonList = options.map((item) => {
     return (
       <Button key={item.title} {...item}>
         {item.title}

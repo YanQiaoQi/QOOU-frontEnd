@@ -1,106 +1,87 @@
-import styles from './PopUpWindow.less';
+import { useState } from 'react';
+import Radio from '../Radio/Radio';
+import Select from '../Select/Select';
+import Input from '../Input/Input';
+import { getRequestBody } from '../../utils/common';
+import { higherOrder } from '../../utils/common';
+import styles from './PopupWindow.less';
 
-/**
- *
- * @param {*} param0
- *    @property {state} mode 弹框模式
- *    @property {setState} setMode 设置弹窗模式
- *    @property {array} inputTitles 请求数据
- * @returns
- */
-function PopUpWindow({ mode, setMode, confirmCallback = null }) {
-  let { isActive, info = [], type, title = '请输入以下信息' } = mode;
-  if (!isActive) return null;
+let typeToComponent = {
+  Input: Input,
+  RadioGroup: Radio.Group,
+  Select: Select,
+};
 
-  let getReguestBody = (titleArr) => {
-    let res = {};
-    for (let i = 0; i < titleArr.length; i++) {
-      res[titleArr[i].reqKey] = '';
-    }
-    return res;
-  };
-  let requestBody = getReguestBody(info);
+function usePopupWindow(initMode) {
+  const [mode, setMode] = useState(initMode);
+  const PopupWindow = () => {
+    if (!mode.isActive) return null;
+    let { title = '请输入以下信息', options = [], onClick = () => {} } = mode;
 
-  let setStyle = (event, key, value) => {
-    event.target.style[key] = value;
-  };
-  let inputHandler = (type) => (e) => {
-    switch (type) {
-      case 'focus': {
-        setStyle(e, 'border', '1px solid #007fff');
-        break;
+    let closeWindow = higherOrder(setMode)({ isActive: false });
+    let onChange = (obj, key) => (value) => (e) => {
+      if (value !== undefined) {
+        obj[key] = value;
+      } else {
+        if (e !== undefined) obj[key] = e.target.value;
       }
-      case 'blur': {
-        setStyle(e, 'borderColor', '#e9e9e9');
-        let key = e.target.name;
-        let value = e.target.value;
-        requestBody[key] = value;
-        console.log(requestBody);
-        break;
+      console.log(obj);
+    };
+
+    let requestBody = getRequestBody(options, 'reqKey');
+
+    let basicClassName = 'myDesign-popupwindow';
+
+    let inputGroup = options.map((element) => {
+      let { type, reqKey, label, options = [], props = {} } = element;
+      let hasLabel = false;
+      if (label !== undefined) {
+        hasLabel = true;
       }
-      default: {
-        console.error('请设定');
-      }
-    }
-  };
-  let closeBtnHandler = (type) => (e) => {
-    switch (type) {
-      case 'click': {
-        setMode({ isActive: false });
-        break;
-      }
-      case 'mouseEnter': {
-        setStyle(e, 'opacity', 0.4);
-        break;
-      }
-      case 'mouseLeave': {
-        setStyle(e, 'opacity', 1);
-        break;
-      }
-      default:
-        break;
-    }
-  };
-  let inputGroups = info.map((item) => {
-    let { title, reqKey, type, isFocus = false } = item;
+      const Component = typeToComponent[type];
+      return (
+        <div
+          key={reqKey}
+          className={styles[`${basicClassName}-input-item-container`]}
+        >
+          {hasLabel ? (
+            <div className={styles[`${basicClassName}-input-item-label`]}>
+              {label}
+            </div>
+          ) : null}
+          <Component
+            options={options}
+            {...props}
+            onChange={onChange(requestBody, reqKey)}
+          />
+        </div>
+      );
+    });
+
     return (
-      <div key={reqKey} className={styles.itemContainer}>
-        <input
-          className={styles.itemInput}
-          type={type}
-          autoComplete="off"
-          name={reqKey}
-          placeholder={title}
-          onFocus={inputHandler('focus')}
-          onBlur={inputHandler('blur')}
-          autoFocus={isFocus}
-        />
+      <div className={styles[`${basicClassName}-window`]}>
+        <div className={styles[`${basicClassName}-container`]}>
+          <div className={styles[`${basicClassName}-top-container`]}>
+            <div className={styles[`${basicClassName}-title`]}>{title}</div>
+            <div
+              className={styles[`${basicClassName}-closeBtn`]}
+              onClick={closeWindow}
+            ></div>
+          </div>
+          <div className={styles[`${basicClassName}-input-container`]}>
+            {inputGroup}
+          </div>
+          <div
+            className={styles[`${basicClassName}-confirmBtn`]}
+            onClick={onClick}
+          >
+            确认
+          </div>
+        </div>
       </div>
     );
-  });
-
-  return (
-    <div className={styles.activeContainer}>
-      <div className={styles.windowContainer}>
-        <div className={styles.windowTopContainer}>
-          <div className={styles.windowTitle}>{title}</div>
-          <div
-            className={styles.windowCloseBtn}
-            onClick={closeBtnHandler('click')}
-            onMouseEnter={closeBtnHandler('mouseEnter')}
-            onMouseLeave={closeBtnHandler('mouseLeave')}
-          ></div>
-        </div>
-        <div className={styles.windowInputContainer}>{inputGroups}</div>
-        <div
-          className={styles.windowBtnContainer}
-          onClick={confirmCallback(type, requestBody)}
-        >
-          确认
-        </div>
-      </div>
-    </div>
-  );
+  };
+  return [PopupWindow, mode, setMode];
 }
-
-export default PopUpWindow;
+export default usePopupWindow;
+export { usePopupWindow };

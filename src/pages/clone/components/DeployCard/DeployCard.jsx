@@ -1,7 +1,7 @@
-import Space from '../../../../components/Space/Space';
+import { Space, Spacer } from '../../../../components/Space/Space';
 import Card from '../../../../components/Card/Card';
 import Text from '../../../../components/Text/Text';
-import Divider from '../../../../myComponent/Divider/Divider';
+import Divider from '../../../../components/Divider/Divider';
 // import styles from './DeployCard.less';
 
 function DeployCard({ isActive = false }) {
@@ -13,7 +13,6 @@ function DeployCard({ isActive = false }) {
       style={{ width: '640px' }}
       headStyle={headStyle}
     >
-      <Space type="spacer" size={16} />
       <Divider />
       <Text style={{ margin: '24px 0', ...headStyle }}>
         Preparing Git Repository.

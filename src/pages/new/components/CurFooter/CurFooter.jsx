@@ -1,12 +1,12 @@
-import Space from '../../../../components/Space/Space';
+import { Space, Spacer } from '../../../../components/Space/Space';
 import styles from './CurFooter.less';
 
 function CurFooter() {
   return (
-    <Space direction="column">
-      <div className={styles.curFooter_title}>OPTIMIZED FOR</div>
+    <Space direction="column" className={styles['curFooter-container']}>
+      <div className={styles['curFooter-title']}>OPTIMIZED FOR</div>
       <Space>
-        <div className={styles.curFooter_list_item}>Golang</div>
+        <div className={styles['curFooter-list-item']}>Golang</div>
       </Space>
     </Space>
   );
