@@ -4,19 +4,48 @@ import { useState } from 'react';
 import styles from './Tabs.less';
 import { combineClassNames } from '../../utils/common';
 
-function Tabs({ children, defaultActiveKey, tabPosition = 'top' }) {
+function Tabs({
+  children,
+  defaultActiveKey,
+  tabPosition = 'top',
+  className,
+  navClassName,
+  contentClassName,
+  navStyle,
+  contentStyle,
+}) {
   const [activeKey, setActiveKey] = useState(defaultActiveKey);
+
   let basicClassName = 'myDesign-tabs';
   let tabsClassName = styles[basicClassName];
-  let childrenArr = children;
-  if (children !== undefined && !Array.isArray(children)) {
-    childrenArr = [children];
-  }
+  let navContainerClassName = styles[`${basicClassName}-nav-container`];
+  let contentContainerClassName = styles[`${basicClassName}-content-container`];
+
   if (tabPosition !== undefined) {
     tabsClassName = combineClassNames(
       tabsClassName,
       styles[`${basicClassName}-${tabPosition}`],
     );
+  }
+  if (className !== undefined) {
+    tabsClassName = combineClassNames(tabsClassName, className);
+  }
+  if (navClassName !== undefined) {
+    navContainerClassName = combineClassNames(
+      navContainerClassName,
+      navClassName,
+    );
+  }
+  if (contentClassName !== undefined) {
+    contentContainerClassName = combineClassNames(
+      contentContainerClassName,
+      contentClassName,
+    );
+  }
+
+  let childrenArr = children;
+  if (children !== undefined && !Array.isArray(children)) {
+    childrenArr = [children];
   }
   let nav = [];
   let tabpanes = [];
@@ -48,8 +77,10 @@ function Tabs({ children, defaultActiveKey, tabPosition = 'top' }) {
   });
   return (
     <div className={tabsClassName}>
-      <div className={styles[`${basicClassName}-nav-container`]}>{nav}</div>
-      <div className={styles[`${basicClassName}-content-container`]}>
+      <div className={navContainerClassName} style={navStyle}>
+        {nav}
+      </div>
+      <div className={contentContainerClassName} style={contentStyle}>
         <div className={styles[`${basicClassName}-content`]}>{tabpanes}</div>
       </div>
     </div>

@@ -1,42 +1,52 @@
 import request from 'umi-request';
+import { typeOf } from './common';
 import { standerdRequestBody } from './requestBodyModel';
 
 const baseURL = 'http://newtest.simpfun.cn/api';
+let isTestLogic = true;
 
 export const get = async (path, callback) => {
-  return request
-    .get(`${baseURL}/${path}`)
-    .then((res) => {
-      // if (callback) {
-      //   callback(res)();
-      // }
-      return res;
-    })
-    .catch((err) => {
-      console.log(err);
-      return err;
-    });
+  if (!isTestLogic) {
+    return request
+      .get(`${baseURL}/${path}`)
+      .then((res) => {
+        // if (callback) {
+        //   callback(res)();
+        // }
+        return res;
+      })
+      .catch((err) => {
+        console.log(err);
+        return err;
+      });
+  }
 };
 
-export const post = async (path, reqBody, callback) => {
-  let requestBody = standerdRequestBody(reqBody, 'post', path);
-  return request
-    .post(`${baseURL}/${path}`, {
-      data: requestBody,
-      // headers: {
-      //   Authorization: localStorage.getItem('token'),
-      // },
-    })
-    .then((res) => {
-      // if (callback) {
-      //   callback(res)();
-      // }
-      console.log(res);
-      return res;
-    })
-    .catch((err) => {
-      return err;
-    });
+export const post = async (
+  path,
+  reqBody,
+  callbacks = { success: () => {}, fail: () => {}, final: () => {} },
+) => {
+  console.log(reqBody);
+  const { success = () => {}, fail = () => {}, final = () => {} } = callbacks;
+  if (!isTestLogic) {
+    return request
+      .post(`${baseURL}/${path}`, {
+        data: reqBody,
+      })
+      .then((res) => {
+        success(res);
+        console.log(res);
+        return res;
+      })
+      .catch((err) => {
+        fail(err);
+        return err;
+      })
+      .finally((info) => {
+        final(info);
+      });
+  }
 };
 
 export const deleteField = async (path, id) => {

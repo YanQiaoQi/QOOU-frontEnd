@@ -1,6 +1,5 @@
-import { useState } from 'react';
 import { connect } from 'dva';
-import { Space, Spacer } from '../../components/Space/Space';
+import { Spacer } from '../../components/Space/Space';
 import Layout from '../../components/Layout/Layout';
 // import Header from '../../components/Header/Header';
 import Introduction from './components/Introduction/Introduction';
@@ -8,64 +7,109 @@ import { ButtonList, Button } from '../../components/Button/Button';
 import Logo from '../../components/Logo/Logo';
 import usePopupWindow from '../../components/PopupWindow/PopUpWindow';
 import styles from './index.less';
+import { curify, higherOrder } from '../../utils/common';
 
 const { Header, Content } = Layout;
 
-function IndexPage({ curyDispatch }) {
-  let buttonListSettings = [
+function IndexPage({ curyHigherDispatch }) {
+  const [PopupWindow, setPopupState] = usePopupWindow({ isActive: false });
+  const higherSetPopupState = higherOrder(setPopupState);
+  let logInFormOption = [
     {
-      title: 'Login',
-      type: 'text',
+      reqKey: 'username',
+      type: 'Input',
+      props: {
+        placeholder: 'username',
+      },
     },
     {
-      title: 'Sign Up',
-      type: 'text',
-      className: styles['qoou-index-button-signup'],
+      reqKey: 'token',
+      type: 'Input',
+      props: {
+        placeholder: 'Github Access Token',
+      },
     },
   ];
-  let buttonSettings = {
+  let signupFormOption = [
+    {
+      reqKey: 'username',
+      type: 'Input',
+      props: {
+        placeholder: 'username',
+      },
+    },
+    {
+      reqKey: 'token',
+      type: 'Input',
+      props: {
+        placeholder: 'Github Access Token',
+      },
+    },
+  ];
+  let logInButtonProps = {
+    type: 'text',
+    onClick: higherSetPopupState({
+      isActive: true,
+      title: 'Login',
+      options: logInFormOption,
+      onClick: curyHigherDispatch('user/login'),
+    }),
+  };
+  let signUpButtonProps = {
+    type: 'text',
+    className: styles['qoou-index-button-signup'],
+    onClick: higherSetPopupState({
+      isActive: true,
+      title: 'sign up',
+      options: signupFormOption,
+      onClick: curyHigherDispatch('user/signup'),
+    }),
+  };
+  let contentButtonProps = {
     type: 'text',
     size: 'personal',
-    style: {
-      backgroundColor: 'black',
-      color: 'white',
-      fontSize: '1rem',
-      fontWeight: '500',
-      padding: '10px 25px',
-      border: '1px solid #eaeaea',
-      borderRadius: '5px',
-    },
+    className: styles['qoou-index-button-startWithGithub'],
+    onClick: higherSetPopupState({
+      isActive: true,
+      title: 'Login',
+      options: logInFormOption,
+      onClick: curyHigherDispatch('user/login'),
+    }),
   };
 
   return (
     <Layout>
-      <Header type="common" style={{ '--width': '1024px' }}>
-        <Logo type="SVG" />
-        <ButtonList options={buttonListSettings} />
+      <Header style={{ '--width': '1024px' }}>
+        <Logo />
+        <ButtonList>
+          <Button {...logInButtonProps}>Login</Button>
+          <Button {...signUpButtonProps}>Sign up</Button>
+        </ButtonList>
       </Header>
       <Content>
         <Spacer size={8} />
         <Introduction />
         <Spacer size={56} />
-        <Button {...buttonSettings}>Start with Github</Button>
+        <Button {...contentButtonProps}>Start with Github</Button>
         <Spacer size={56} />
       </Content>
+      <PopupWindow />
     </Layout>
   );
 }
 
 export default connect(
-  ({ index }) => {
+  ({ user }) => {
     if (process.env.NODE_ENV === 'development') {
-      // // console.log(index);
+      console.log(user);
     }
-    return JSON.parse(JSON.stringify(index));
+    return JSON.parse(JSON.stringify(user));
   },
   (dispatch) => {
     return {
-      curyDispatch: (type, payload) => () => {
+      curyHigherDispatch: curify((type, payload) => () => {
         dispatch({ type, payload });
-      },
+      }),
     };
   },
 )(IndexPage);

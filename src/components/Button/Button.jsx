@@ -106,14 +106,29 @@ function Button({
   );
 }
 
-function ButtonList({ options = [], gap }) {
-  let ButtonList = options.map((item) => {
-    return (
-      <Button key={item.title} {...item}>
-        {item.title}
-      </Button>
-    );
-  });
+function ButtonList({ children, options, gap }) {
+  let hasChildren = false;
+  let hasOption = false;
+  if (children !== undefined) {
+    hasChildren = true;
+  }
+  if (options !== undefined) {
+    hasOption = true;
+  }
+
+  if (!hasChildren && !hasOption) {
+    console.error('请输入');
+  }
+
+  let ButtonList = hasOption
+    ? options.map((item) => {
+        return (
+          <Button key={item.content} {...item}>
+            {item.content}
+          </Button>
+        );
+      })
+    : children;
 
   return <Space size={gap}>{ButtonList}</Space>;
 }

@@ -6,6 +6,7 @@ export default defineConfig({
   },
   routes: [
     { path: '/', component: '@/pages/index/index.js' },
+    { path: '/dashboard', component: '@/pages/dashboard/index.js' },
     { path: '/new', component: '@/pages/new/index.js' },
     { path: '/new/clone', component: '@/pages/clone/index.js' },
   ],

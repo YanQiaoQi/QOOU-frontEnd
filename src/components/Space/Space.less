@@ -1,12 +1,13 @@
-.myDesign-space-row {
+.myDesign-space {
   display: flex;
+  justify-content: var(--justify, initial);
+  align-items: var(--align, initial);
+}
+.myDesign-space-row {
   flex-direction: row;
-  align-items: center;
 }
 .myDesign-space-column {
-  display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 .myDesign-space-align-start {
@@ -23,4 +24,19 @@
 
 .myDesign-space-align-baseline {
   align-items: baseline;
+}
+
+.myDesign-wrapper {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  width: var(--page-width-with-margin);
+  padding-left: var(--geist-page-margin);
+  padding-right: var(--geist-page-margin);
+}
+
+.myDesign-wrapper-full.myDesign-wrapper {
+  width: 100vw;
+  padding-left: 0;
+  padding-right: 0;
 }

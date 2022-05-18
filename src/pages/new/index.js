@@ -22,15 +22,15 @@ function NewPage({}) {
       'To deploy a new Project, import an existing Git Repository or get started with one of our Templates.',
     style: { padding: '48px 0 72px 0' },
   };
-  
+
   let buttonListSettings = [
     {
-      title: 'Feedback',
+      content: 'Feedback',
       action: null,
       type: 'text',
     },
     {
-      title: 'Support',
+      content: 'Support',
       action: null,
       type: 'text',
     },
@@ -45,7 +45,7 @@ function NewPage({}) {
         </Breadcrumb>
 
         <Space size={32}>
-          <ButtonList ButtonsSetting={buttonListSettings} />
+          <ButtonList options={buttonListSettings} />
           <MyAvatar />
         </Space>
       </Header>
@@ -54,9 +54,7 @@ function NewPage({}) {
 
       <Content>
         <Narrative {...narrativeSettings} />
-        <Space size={48}>
-          <CloneCard />
-        </Space>
+        <CloneCard />
         <Spacer size={96} />
       </Content>
 

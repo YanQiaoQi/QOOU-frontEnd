@@ -11,7 +11,8 @@ let spaceSizeObj = {
 function Space({
   children,
   direction = 'row',
-  align,
+  align = 'center',
+  justify,
   wrap = false,
   size = 'middle',
   split,
@@ -19,7 +20,10 @@ function Space({
   style,
 }) {
   let basicClassName = 'myDesign-space';
-  let spaceClassName = styles[`${basicClassName}-${direction}`];
+  let spaceClassName = combineClassNames(
+    styles[`${basicClassName}`],
+    styles[`${basicClassName}-${direction}`],
+  );
   let spaceStyle = { gap: getCSSValueFromData(size, spaceSizeObj) };
   if (style !== undefined) {
     Object.assign(spaceStyle, style);
@@ -49,5 +53,18 @@ function Space({
 function Spacer({ size }) {
   return <span style={{ marginTop: size, marginLeft: size }}></span>;
 }
+
+function Wrapper({ children, full }) {
+  let basicClassName = 'myDesign-wrapper';
+  let wrapperClassName = styles[basicClassName];
+  if (full === true) {
+    wrapperClassName = combineClassNames(
+      wrapperClassName,
+      styles[`${basicClassName}-full`],
+    );
+  }
+  console.log(wrapperClassName);
+  return <div className={wrapperClassName}>{children}</div>;
+}
 export default Space;
-export { Spacer, Space };
+export { Spacer, Space, Wrapper };

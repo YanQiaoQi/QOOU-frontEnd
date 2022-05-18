@@ -73,7 +73,7 @@ function usePopupWindow(initMode) {
           </div>
           <div
             className={styles[`${basicClassName}-confirmBtn`]}
-            onClick={onClick}
+            onClick={onClick(requestBody)}
           >
             确认
           </div>
@@ -81,7 +81,7 @@ function usePopupWindow(initMode) {
       </div>
     );
   };
-  return [PopupWindow, mode, setMode];
+  return [PopupWindow, setMode];
 }
 export default usePopupWindow;
 export { usePopupWindow };
