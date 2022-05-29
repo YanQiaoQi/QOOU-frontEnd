@@ -7,7 +7,7 @@
     "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
     "test": "umi-test",
     "test:coverage": "umi-test --coverage",
-    "push": "git push git@github.com:YanQiaoQi/QOOU-frontEnd.git"
+    "push": "git add . && git commit -ma && git push git@github.com:YanQiaoQi/QOOU-frontEnd.git"
 
   },
   "repository": {

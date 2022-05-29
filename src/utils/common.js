@@ -51,7 +51,7 @@ export function getRequestBody(arr, reqKey) {
   return requestBody;
 }
 
-export let curify = (func, ...param) => {
+export const curify = (func, ...param) => {
   let argumentsArr = param || [];
   let paramLength = argumentsArr.legnth;
   if (paramLength >= func.length) {
@@ -69,9 +69,19 @@ export let curify = (func, ...param) => {
   };
 };
 
-export let higherOrder =
+export const higherOrder =
   (func) =>
   (...param) =>
   () => {
     func(...param);
   };
+
+export const getPatharr = (arguPath) => {
+  let activePath = location.pathname;
+  if (typeof arguPath === 'string') {
+    activePath = arguPath;
+  }
+  let result = activePath.split('/');
+  if (activePath[0] === '/') result.shift();
+  return result;
+};

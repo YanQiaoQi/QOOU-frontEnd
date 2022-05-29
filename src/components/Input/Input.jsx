@@ -1,3 +1,4 @@
+import { combineClassNames } from '../../utils/common';
 import styles from './Input.less';
 
 function Input({
@@ -5,8 +6,11 @@ function Input({
   size = 'middle',
   placeholder,
   defaultValue,
-  onChange,
+  onChange = () => {},
+  className,
+  style,
 }) {
+  let htmlType = type;
   let getDistenceFromSize = (size, key) => {
     let typeOfData = (data) => {
       return Object.prototype.toString.call(data).slice(8, -1);
@@ -28,16 +32,22 @@ function Input({
       }
     }
   };
-  let heightStyle = getDistenceFromSize(size, '--height');
-  let inputClassName = styles['input'];
+  let inputStyle = getDistenceFromSize(size, '--height');
+  let inputClassName = styles['myDesign-input'];
+  if (className !== undefined) {
+    inputClassName = combineClassNames(inputClassName, className);
+  }
+  if (style !== undefined) {
+    Object.assign(inputStyle, style);
+  }
   return (
     <input
       className={inputClassName}
-      type={type}
+      htmlType={htmlType}
       placeholder={placeholder}
       value={defaultValue}
-      style={heightStyle}
-      onChange={onChange()}
+      style={inputStyle}
+      onChange={onChange}
     />
   );
 }

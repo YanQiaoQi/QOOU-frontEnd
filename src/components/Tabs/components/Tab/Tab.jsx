@@ -1,7 +1,7 @@
 import { combineClassNames } from '../../../../utils/common';
 import styles from './Tab.less';
 
-function Tab({ children, value, activeKey, setActiveKey }) {
+function Tab({ children, value, activeKey, setActiveKey, onClick }) {
   let basicClassName = 'myDesign-tabs-tab';
   let tabClassName = styles[basicClassName];
   let isActive = false;
@@ -17,6 +17,7 @@ function Tab({ children, value, activeKey, setActiveKey }) {
 
   let clickHandler = () => {
     setActiveKey(value);
+    onClick();
   };
   return (
     <div className={tabClassName} onClick={clickHandler}>

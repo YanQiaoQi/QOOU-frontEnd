@@ -54,7 +54,7 @@ function Spacer({ size }) {
   return <span style={{ marginTop: size, marginLeft: size }}></span>;
 }
 
-function Wrapper({ children, full }) {
+function Wrapper({ children, full, className }) {
   let basicClassName = 'myDesign-wrapper';
   let wrapperClassName = styles[basicClassName];
   if (full === true) {
@@ -63,7 +63,9 @@ function Wrapper({ children, full }) {
       styles[`${basicClassName}-full`],
     );
   }
-  console.log(wrapperClassName);
+  if (className !== undefined) {
+    wrapperClassName = combineClassNames(wrapperClassName, className);
+  }
   return <div className={wrapperClassName}>{children}</div>;
 }
 export default Space;

@@ -1,4 +1,4 @@
-import { Space } from '../../../../components/Space/Space';
+import { Space } from '../../components/Space/Space';
 import styles from './Narrative.less';
 
 function Narrative({ title = 'title', description = 'description', style }) {

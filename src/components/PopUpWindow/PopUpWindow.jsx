@@ -16,6 +16,7 @@ function usePopupWindow(initMode) {
   const [mode, setMode] = useState(initMode);
   const PopupWindow = () => {
     if (!mode.isActive) return null;
+
     let { title = '请输入以下信息', options = [], onClick = () => {} } = mode;
 
     let closeWindow = higherOrder(setMode)({ isActive: false });

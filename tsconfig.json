@@ -22,7 +22,7 @@
     "config/**/*",
     ".umirc.ts",
     "typings.d.ts"
-  ],
+, "common.js"  ],
   "exclude": [
     "node_modules",
     "lib",

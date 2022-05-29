@@ -1,28 +1,37 @@
 .myDesign-btn-primary {
-    border-color: #1890ff;
-    background: #1890ff;
-    color: #fff;
-    text-shadow: 0 -1px 0 rgb(0 0 0 / 12%);
-    box-shadow: 0 2px #0000000b;
-  }
-  .myDesign-btn-common {
-    .myDesign-btn;
-  }
-  .myDesign-btn-dashed {
-    color: #000000d9;
-    border-style: dashed;
-    border-color: #d9d9d9;
-    background: #fff;
-  }
-  .myDesign-btn-text {
-    color: #000000d9;
-    border-color: transparent;
-    background: 0 0;
-    box-shadow: none;
-  }
-  .myDesign-btn-link {
-    color: #1890ff;
-    border-color: transparent;
-    background: 0 0;
-    box-shadow: none;
-  }
+  border-color: var(--myDesign-primary-color, #1890ff);
+  background: var(--myDesign-primary-color, #1890ff);
+  color: #fff;
+  text-shadow: 0 -1px 0 rgb(0 0 0 / 12%);
+  box-shadow: 0 2px #0000000b;
+}
+.myDesign-btn-primary:hover {
+  border-color: var(--myDesign-primary-color, #1890ff);
+  background: white;
+  color: var(--myDesign-primary-color, #1890ff);
+}
+
+.myDesign-btn-common {
+  .myDesign-btn;
+}
+.myDesign-btn-common:hover {
+  border-color: var(--myDesign-primary-color, #1890ff);
+}
+.myDesign-btn-dashed {
+  color: #000000d9;
+  border-style: dashed;
+  border-color: #d9d9d9;
+  background: #fff;
+}
+.myDesign-btn-text {
+  color: #000000d9;
+  border-color: transparent;
+  background: 0 0;
+  box-shadow: none;
+}
+.myDesign-btn-link {
+  color: var(--myDesign-primary-color, #1890ff);
+  border-color: transparent;
+  background: 0 0;
+  box-shadow: none;
+}

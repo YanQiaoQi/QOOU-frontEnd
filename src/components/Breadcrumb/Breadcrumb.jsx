@@ -1,45 +1,43 @@
 import { Space } from '../Space/Space';
 import styles from './Breadcrumb.less';
 
-function Item({ children, type = 'common' }) {
+function Item({ children, href, onClick = () => {} }) {
   // 参数检测
   if (Array.isArray(children)) console.error('Item只能包裹一个组件');
 
-  switch (type) {
-    case 'common': {
-      break;
-    }
-    case 'common': {
-      break;
-    }
-    case 'common': {
-      break;
-    }
-    case 'common': {
-      break;
-    }
-    default:
-      break;
+  let basicClassName = 'myDesign-breadcrumb-item';
+  let item = children;
+  if (href !== undefined) {
+    item = <a href={href}>{children}</a>;
   }
-  return <div>{children}</div>;
+
+  return (
+    <li className={styles[`${basicClassName}`]}>
+      <span className={styles[`${basicClassName}-link`]} onClick={onClick}>
+        {item}
+      </span>
+      <span className={styles[`${basicClassName}-separator`]}>/</span>
+    </li>
+  );
 }
 
-function Breadcrumb({ children }) {
-  let curChildren = children;
-  if (!Array.isArray(children)) curChildren = [children];
-  let target = curChildren.map((item, index) => {
-    let curClassName =
-      index === curChildren.length - 1
-        ? 'breadcrumb_last_separator'
-        : 'breadcrumb_separator';
-    return (
-      <Space key={index} size={8}>
-        {item}
-        <div className={styles[curClassName]}>{'/'}</div>
-      </Space>
-    );
-  });
-  return <Space size={8}>{target}</Space>;
+function Separator({}) {
+  return <></>;
+}
+
+function Breadcrumb({ children, separator = '/' }) {
+  let childrenArr = children;
+  if (!Array.isArray(children)) {
+    childrenArr = [children];
+  }
+
+  let basicClassName = 'myDesign-breadcrumb';
+
+  return (
+    <nav className={styles[`${basicClassName}`]}>
+      <ol>{childrenArr}</ol>
+    </nav>
+  );
 }
 
 Breadcrumb.Item = Item;

@@ -2,37 +2,22 @@ import Layout from '../../components/Layout/Layout';
 import { Space, Spacer } from '../../components/Space/Space';
 import Divider from '../../components/Divider/Divider';
 // Header
-import Breadcrumb from '../../components/Breadcrumb/Breadcrumb';
-import MyAvatar from '../../myComponent/MyAvatar/MyAvatar';
-import Logo from '../../components/Logo/Logo';
+import Header from '../../myComponent/QoouHeader/QoouHeader';
 import { ButtonList, Button } from '../../components/Button/Button';
 // Content
 import CreateCard from './components/CreateCard/CreateCard';
 import DeployCard from './components/DeployCard/DeployCard';
-import Narrative from '../new/components/Narrative/Narrative';
+import Narrative from '../../myComponent/Narrative/Narrative';
 // Sider
 import FrameworkCard from '../new/components/FrameworkCard/FrameworkCard';
 import Steps from './components/Steps/Steps';
 
 import { changePathOfLocation } from '../../utils/common';
 
-const { Header, Content, Sider } = Layout;
+const {Content, Sider } = Layout;
 
 function ClonePage({ location }) {
   let { template = 'go' } = location.query;
-  // Header
-  let buttonListSettings = [
-    {
-      title: 'Feedback',
-      action: null,
-      type: 'common',
-    },
-    {
-      title: 'Support',
-      action: null,
-      type: 'common',
-    },
-  ];
   // Content
   let narrativeSettings = {
     title: "You're almost done.",
@@ -65,24 +50,10 @@ function ClonePage({ location }) {
   };
   return (
     <Layout>
-      <Header type="sticky">
-        <Breadcrumb>
-          <Logo type="simple" info="32px" />
-          <MyAvatar username="yanqiaoqi" />
-        </Breadcrumb>
-        <Space size={32}>
-          <ButtonList ButtonsSetting={buttonListSettings} />
-          <MyAvatar />
-        </Space>
-      </Header>
+      <Header type="sticky" username="yanqiaoqi" />
       <Spacer size={72} />
       <Content>
-        <Button
-          type="link"
-          onClick={() => {
-            changePathOfLocation('/new');
-          }}
-        >
+        <Button type="link" href="/new">
           back
         </Button>
         <Narrative {...narrativeSettings} />

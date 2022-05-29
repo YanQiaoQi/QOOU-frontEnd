@@ -4,7 +4,7 @@ import Layout from '../../components/Layout/Layout';
 // import Header from '../../components/Header/Header';
 import Introduction from './components/Introduction/Introduction';
 import { ButtonList, Button } from '../../components/Button/Button';
-import Logo from '../../components/Logo/Logo';
+import Logo from '../../myComponent/Logo/Logo';
 import usePopupWindow from '../../components/PopupWindow/PopUpWindow';
 import styles from './index.less';
 import { curify, higherOrder } from '../../utils/common';
@@ -46,6 +46,8 @@ function IndexPage({ curyHigherDispatch }) {
       },
     },
   ];
+
+
   let logInButtonProps = {
     type: 'text',
     onClick: higherSetPopupState({
@@ -56,7 +58,7 @@ function IndexPage({ curyHigherDispatch }) {
     }),
   };
   let signUpButtonProps = {
-    type: 'text',
+    type: 'primary',
     className: styles['qoou-index-button-signup'],
     onClick: higherSetPopupState({
       isActive: true,
@@ -66,7 +68,7 @@ function IndexPage({ curyHigherDispatch }) {
     }),
   };
   let contentButtonProps = {
-    type: 'text',
+    type: 'primary',
     size: 'personal',
     className: styles['qoou-index-button-startWithGithub'],
     onClick: higherSetPopupState({

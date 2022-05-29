@@ -1,5 +1,5 @@
 import styles from './Logo.less';
-import Space from '../Space/Space';
+import Space from '../../components/Space/Space';
 
 function Logo({ type, info = '17px', action = null }) {
   let logo;
@@ -10,7 +10,17 @@ function Logo({ type, info = '17px', action = null }) {
           className={styles.personalIcon}
           style={{ '--radius': info }}
           onClick={action}
-        ></div>
+        />
+      );
+      return logo;
+    }
+    case 'simple': {
+      logo = (
+        <div
+          className={styles.simpleLogo}
+          style={{ '--radius': info }}
+          onClick={action}
+        />
       );
       return logo;
     }

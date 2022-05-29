@@ -1,7 +1,7 @@
-import Avatar from '../../components/Avatar/Avatar';
-// import styles from './MyAvatar.less'
+import Avatar from '../Avatar/Avatar';
+// import styles from './QoouAvatar.less'
 
-function MyAvatar({ username }) {
+function QoouAvatar({ username }) {
   let hasUsername = false;
   if (username !== undefined) {
     hasUsername = true;
@@ -31,4 +31,4 @@ function MyAvatar({ username }) {
   }
 }
 
-export default MyAvatar;
+export default QoouAvatar;

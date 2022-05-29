@@ -50,7 +50,7 @@ function Tabs({
   let nav = [];
   let tabpanes = [];
   childrenArr.forEach((element) => {
-    let { tab, children } = element.props;
+    let { tab, children, tabOnClick } = element.props;
     let { key } = element;
     let curTab = (
       <Tab
@@ -58,6 +58,7 @@ function Tabs({
         value={key}
         activeKey={activeKey}
         setActiveKey={setActiveKey}
+        onClick={tabOnClick}
       >
         {tab}
       </Tab>
