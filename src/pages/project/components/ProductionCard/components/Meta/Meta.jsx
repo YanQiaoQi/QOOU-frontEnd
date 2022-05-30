@@ -13,9 +13,7 @@ function Item({ label, data }) {
   );
 }
 function Meta({}) {
-  return (
-
-  );
+  return <div></div>;
 }
 
 export default Meta;
