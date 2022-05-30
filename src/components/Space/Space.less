@@ -26,17 +26,31 @@
   align-items: baseline;
 }
 
+.myDesign-space-justify-between {
+  justify-content: space-between;
+}
+
 .myDesign-wrapper {
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
   width: var(--page-width-with-margin);
-  padding-left: var(--geist-page-margin);
-  padding-right: var(--geist-page-margin);
+  padding-left: var(--page-margin);
+  padding-right: var(--page-margin);
 }
 
 .myDesign-wrapper-full.myDesign-wrapper {
   width: 100vw;
   padding-left: 0;
   padding-right: 0;
+}
+
+.myDesign-spacer {
+  display: block;
+  width: 1px;
+  height: 1px;
+  min-width: 1px;
+  min-height: 1px;
+  margin-top: calc(var(--size) - 1px);
+  margin-left: calc(var(--size) - 1px);
 }

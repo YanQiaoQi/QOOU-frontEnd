@@ -7,7 +7,7 @@ function Sider({ children, type = 'common', className, style }) {
     styles[basicClassName],
     styles[`${basicClassName}-${type}`],
   );
-  if (className !== undefined) {
+  if (className) {
     siderClassName = combineClassNames(siderClassName, className);
   }
   return (

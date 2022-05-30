@@ -3,13 +3,13 @@ import styles from './Text.less';
 
 function Text({ children, className, style }) {
   let textClassName = styles['myDesign-text'];
-  if (className !== undefined) {
+  if (className) {
     textClassName = combineClassNames(textClassName, className);
   }
   return (
-    <p className={textClassName} style={style}>
+    <span className={textClassName} style={style}>
       {children}
-    </p>
+    </span>
   );
 }
 

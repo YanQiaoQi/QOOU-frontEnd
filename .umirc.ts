@@ -7,7 +7,6 @@ export default defineConfig({
   routes: [
     { path: '/new', component: '@/pages/new/index.js' },
     { path: '/new/clone', component: '@/pages/clone/index.js' },
-    { path: '/', component: '@/pages/index/index.js' },
     {
       path: '/:username',
       component: '@/pages/dashboard/index.js',
@@ -23,6 +22,7 @@ export default defineConfig({
       component: '@/pages/dashboard/index.js',
       exact: true,
     },
+    { path: '/', component: '@/pages/index/index.js', exact: true },
   ],
   fastRefresh: {},
 });

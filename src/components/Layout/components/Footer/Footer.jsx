@@ -4,7 +4,7 @@ import styles from './Footer.less';
 function Footer({ children, className, style }) {
   let basicClassName = 'myDesign-layout-footer';
   let footerClassName = styles[basicClassName];
-  if (className !== undefined) {
+  if (className) {
     footerClassName = combineClassNames(footerClassName, className);
   }
   return (

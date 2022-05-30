@@ -3,7 +3,7 @@ import styles from './Descriptions.less';
 
 function Descriptions({ children, title, column = 2 }) {
   let hasTitle = false;
-  if (title !== undefined) {
+  if (title) {
     hasTitle = true;
   }
   let basicClassName = 'myDesign-descriptions';

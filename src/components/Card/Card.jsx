@@ -11,7 +11,7 @@ function Card({
   bodyStyle,
 }) {
   let hasExtra = false;
-  if (extra !== undefined) {
+  if (extra) {
     hasExtra = true;
   }
 

@@ -25,23 +25,29 @@ function Space({
     styles[`${basicClassName}-${direction}`],
   );
   let spaceStyle = { gap: getCSSValueFromData(size, spaceSizeObj) };
-  if (style !== undefined) {
+  if (style) {
     Object.assign(spaceStyle, style);
   }
   if (wrap === true) {
     spaceStyle.flexWrap = 'wrap';
   }
 
-  if (className !== undefined) {
+  if (className) {
     spaceClassName = combineClassNames(spaceClassName, className);
   }
-  if (align !== undefined) {
+  if (align) {
     spaceClassName = combineClassNames(
       spaceClassName,
       styles[`${basicClassName}-align-${align}`],
     );
   }
-  if (split !== undefined) {
+  if (justify) {
+    spaceClassName = combineClassNames(
+      spaceClassName,
+      styles[`${basicClassName}-justify-${justify}`],
+    );
+  }
+  if (split) {
   }
   return (
     <div className={spaceClassName} style={spaceStyle}>
@@ -50,8 +56,13 @@ function Space({
   );
 }
 
-function Spacer({ size }) {
-  return <span style={{ marginTop: size, marginLeft: size }}></span>;
+function Spacer({ size = 16 }) {
+  return (
+    <span
+      className={styles['myDesign-spacer']}
+      style={{ '--size': `${size}px` }}
+    ></span>
+  );
 }
 
 function Wrapper({ children, full, className }) {
@@ -63,7 +74,7 @@ function Wrapper({ children, full, className }) {
       styles[`${basicClassName}-full`],
     );
   }
-  if (className !== undefined) {
+  if (className) {
     wrapperClassName = combineClassNames(wrapperClassName, className);
   }
   return <div className={wrapperClassName}>{children}</div>;

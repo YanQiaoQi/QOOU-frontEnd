@@ -5,7 +5,7 @@ import styles from './Content.less';
 function Content({ children, className, style }) {
   let basicClassName = 'myDesign-layout-content';
   let contentClassName = styles[basicClassName];
-  if (className !== undefined) {
+  if (className) {
     contentClassName = combineClassNames(contentClassName, className);
   }
   return (

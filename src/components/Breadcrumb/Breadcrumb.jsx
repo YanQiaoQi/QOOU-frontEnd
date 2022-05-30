@@ -7,7 +7,7 @@ function Item({ children, href, onClick = () => {} }) {
 
   let basicClassName = 'myDesign-breadcrumb-item';
   let item = children;
-  if (href !== undefined) {
+  if (href) {
     item = <a href={href}>{children}</a>;
   }
 

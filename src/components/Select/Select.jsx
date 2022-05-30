@@ -8,10 +8,10 @@ function Option() {}
 function Select({ children, options = testOptions, style, onChange }) {
   let hasChildren = false;
   let hasOptions = false;
-  if (children !== undefined) {
+  if (children) {
     hasChildren = true;
   }
-  if (options !== undefined) {
+  if (options) {
     hasOptions = true;
   }
   if (!hasChildren && !hasOptions) {

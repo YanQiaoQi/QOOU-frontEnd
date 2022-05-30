@@ -4,14 +4,14 @@ import styles from './GradientText.less';
 function GradientText({ text, startColor, endColor, className, style }) {
   let basicClassName = 'myDesign-gradientText';
   let gradientTextClassName = styles[basicClassName];
-  if (className !== undefined) {
+  if (className) {
     gradientTextClassName = combineClassNames(gradientTextClassName, className);
   }
   let gradientStyle = {
     '--startColor': startColor,
     '--endColor': endColor,
   };
-  if (style !== undefined) {
+  if (style) {
     Object.assign(gradientStyle, style);
   }
   return (

@@ -16,10 +16,10 @@ function Group({
 
   let hasChildren = false;
   let hasOptions = false;
-  if (children !== undefined) {
+  if (children) {
     hasChildren = true;
   }
-  if (options !== undefined) {
+  if (options) {
     hasOptions = true;
   }
   if (!hasOptions && hasChildren && !Array.isArray(children)) {

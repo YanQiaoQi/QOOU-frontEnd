@@ -34,10 +34,10 @@ function Input({
   };
   let inputStyle = getDistenceFromSize(size, '--height');
   let inputClassName = styles['myDesign-input'];
-  if (className !== undefined) {
+  if (className) {
     inputClassName = combineClassNames(inputClassName, className);
   }
-  if (style !== undefined) {
+  if (style) {
     Object.assign(inputStyle, style);
   }
   return (

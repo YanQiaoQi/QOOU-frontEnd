@@ -21,22 +21,22 @@ function Tabs({
   let navContainerClassName = styles[`${basicClassName}-nav-container`];
   let contentContainerClassName = styles[`${basicClassName}-content-container`];
 
-  if (tabPosition !== undefined) {
+  if (tabPosition) {
     tabsClassName = combineClassNames(
       tabsClassName,
       styles[`${basicClassName}-${tabPosition}`],
     );
   }
-  if (className !== undefined) {
+  if (className) {
     tabsClassName = combineClassNames(tabsClassName, className);
   }
-  if (navClassName !== undefined) {
+  if (navClassName) {
     navContainerClassName = combineClassNames(
       navContainerClassName,
       navClassName,
     );
   }
-  if (contentClassName !== undefined) {
+  if (contentClassName) {
     contentContainerClassName = combineClassNames(
       contentContainerClassName,
       contentClassName,
@@ -44,7 +44,7 @@ function Tabs({
   }
 
   let childrenArr = children;
-  if (children !== undefined && !Array.isArray(children)) {
+  if (children && !Array.isArray(children)) {
     childrenArr = [children];
   }
   let nav = [];

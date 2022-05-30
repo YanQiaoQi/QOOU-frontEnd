@@ -9,7 +9,7 @@ function Divider({
   style,
 }) {
   let hasTitle = false;
-  if (children !== undefined) {
+  if (children) {
     hasTitle = true;
   }
 
@@ -25,7 +25,7 @@ function Divider({
       styles[`${basicClassName}-has-title-${titleOrientation}`],
     );
   }
-  if (className !== undefined) {
+  if (className) {
     dividerClassName = combineClassNames(dividerClassName, className);
   }
 

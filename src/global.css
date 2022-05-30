@@ -3,6 +3,6 @@ html {
     'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   --page-width-with-margin: 1024px;
+  --page-margin: 24px;
   --myDesign-primary-color: black;
-  
 }

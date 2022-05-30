@@ -8,7 +8,7 @@ function Header({ children, type = 'common', className, style }) {
     styles[basicClassName],
     styles[`${basicClassName}-${type}`],
   );
-  if (className !== undefined) {
+  if (className) {
     headerClassName = combineClassNames(headerClassName, className);
   }
 

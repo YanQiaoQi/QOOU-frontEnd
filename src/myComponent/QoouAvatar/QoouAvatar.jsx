@@ -3,7 +3,7 @@ import Avatar from '../Avatar/Avatar';
 
 function QoouAvatar({ username }) {
   let hasUsername = false;
-  if (username !== undefined) {
+  if (username) {
     hasUsername = true;
   }
   

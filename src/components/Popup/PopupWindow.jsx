@@ -19,10 +19,10 @@ function usePopupWindow(initMode) {
 
     let closeWindow = higherOrder(setMode)({ isActive: false });
     let onChange = (obj, key) => (value) => (e) => {
-      if (value !== undefined) {
+      if (value) {
         obj[key] = value;
       } else {
-        if (e !== undefined) obj[key] = e.target.value;
+        if (e) obj[key] = e.target.value;
       }
       console.log(obj);
     };
@@ -34,7 +34,7 @@ function usePopupWindow(initMode) {
     let inputGroup = options.map((element) => {
       let { type, reqKey, label, options = [], props = {} } = element;
       let hasLabel = false;
-      if (label !== undefined) {
+      if (label) {
         hasLabel = true;
       }
       const Component = typeToComponent[type];

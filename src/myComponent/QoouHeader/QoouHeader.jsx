@@ -44,7 +44,7 @@ let dashboardButtonsOptions = [
 function QoouHeader({ type = 'common', username, projectName }) {
   let buttonsOptions = dashboardButtonsOptions;
   let hasProjectName = false;
-  if (projectName !== undefined) {
+  if (projectName) {
     hasProjectName = true;
   }
 

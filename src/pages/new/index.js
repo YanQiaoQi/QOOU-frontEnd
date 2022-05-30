@@ -5,10 +5,10 @@ import { Space, Spacer } from '../../components/Space/Space';
 import Header from '../../myComponent/QoouHeader/QoouHeader';
 // content
 import Narrative from '../../myComponent/Narrative/Narrative';
-import Cover from './components/Cover/Cover';
 import CloneCard from './components/CloneCard/CloneCard';
 // Footer
 import CurFooter from './components/CurFooter/CurFooter';
+import styles from './index.less';
 
 const { Content, Footer } = Layout;
 
@@ -23,8 +23,7 @@ function NewPage({}) {
   return (
     <Layout>
       <Header type="sticky" username="yanqiaoqi" />
-      <Cover />
-      <Content>
+      <Content className={styles['qoou-new-content']}>
         <Narrative {...narrativeSettings} />
         <CloneCard />
         <Spacer size={96} />

@@ -10,7 +10,7 @@ function Layout({ children, className, style }) {
 	let hasSider = false;
 	let childrenArr = children;
 	if (
-		childrenArr !== undefined &&
+		childrenArr &&
 		!Array.isArray(children)
 	) {
 		childrenArr = [children];
@@ -25,7 +25,7 @@ function Layout({ children, className, style }) {
 
 	let basicClassName = "myDesign-layout";
 	let layoutClassName = styles[basicClassName];
-	if (className !== undefined) {
+	if (className) {
 		if (typeof className === "string") {
 			layoutClassName = combineClassNames(
 				layoutClassName,

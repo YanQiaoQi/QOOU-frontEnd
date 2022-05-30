@@ -26,13 +26,13 @@ function Button({
   let hasChildren = false;
   let isIconOnly = false;
   let isDisabled = false;
-  if (href !== undefined) {
+  if (href) {
     isLink = true;
   }
-  if (children !== undefined) {
+  if (children) {
     hasChildren = true;
   }
-  if (icon !== undefined) {
+  if (icon) {
     hasIcon = true;
     isIconOnly = hasIcon && !hasChildren;
   }
@@ -52,7 +52,7 @@ function Button({
       styles[`${basicBtnClassName}-icon-only`],
     );
   }
-  if (className !== undefined) {
+  if (className) {
     btnClassName = combineClassNames(btnClassName, className);
   }
   if (block === true) {
@@ -109,10 +109,10 @@ function Button({
 function ButtonList({ children, options, gap }) {
   let hasChildren = false;
   let hasOption = false;
-  if (children !== undefined) {
+  if (children) {
     hasChildren = true;
   }
-  if (options !== undefined) {
+  if (options) {
     hasOption = true;
   }
 
